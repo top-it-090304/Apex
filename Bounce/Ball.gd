@@ -23,7 +23,7 @@ func _process(_delta):
 	velocity.x = direction * speed
 	velocity.y += gravity * _delta
 	
-	if Input.is_action_just_pressed("move_up") && is_on_floor():
+	if Input.is_action_just_pressed("move_up") :
 		velocity.y = jump
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
