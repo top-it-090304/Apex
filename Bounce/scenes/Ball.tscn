@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Ball.gd" type="Script" id=1]
+[ext_resource path="res://assests/TracerBounce.png" type="Texture" id=2]
+[ext_resource path="res://assests/Bounce.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.1359
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "moves",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+} ]
+
+[node name="Ball" type="KinematicBody2D"]
+collision_layer = 4
+script = ExtResource( 1 )
+speed = 300
+jump = -500
+gravity = 1100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 2 )
+animation = "stand"
