@@ -1,0 +1,4 @@
+res://scenes/ball.tscn
+res://scenes/ball.gd
+res://scenes/platformBlock.tscn
+res://scenes/level1.tscn

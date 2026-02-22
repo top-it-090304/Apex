@@ -10,7 +10,7 @@ var alive = true
 func _ready():
 	add_to_group("player")
 
-func _process(_delta):
+func _process(delta):
 	if not alive:
 		return
 	
@@ -21,9 +21,9 @@ func _process(_delta):
 		direction +=1
 	
 	velocity.x = direction * speed
-	velocity.y += gravity * _delta
+	velocity.y += gravity * delta
 	
-	if Input.is_action_just_pressed("move_up") :
+	if Input.is_action_just_pressed("move_up") && is_on_floor():
 		velocity.y = jump
 	
 	velocity = move_and_slide(velocity, Vector2.UP)

@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1771754617
+icon.svg::CompressedTexture2D/CompressedTexture2D::6498398665431195241::1771751177::1771751183::1::::<><><>0<>0<>7cc8f0518aece957a1c5c6401ea43011<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://assests/::1771751516
+Bounce.png::CompressedTexture2D/CompressedTexture2D::3803287851246916699::1771585386::1771751516::1::::<><><>0<>0<>fa479731d9774be60d71f959d2df8284<>res://.godot/imported/Bounce.png-27c4ad1c8a939f2f15fed5bbba5b5543.ctex::
+icon.png::CompressedTexture2D/CompressedTexture2D::5105308293720969715::1771585386::1771751516::1::::<><><>0<>0<>9a9a8d05ef4ec0f308622740e4b0c933<>res://.godot/imported/icon.png-c20a4f9e497f81604d42dfdd79f667da.ctex::
+Rectangle 2.png::CompressedTexture2D/CompressedTexture2D::5249390734990137362::1771585386::1771751516::1::::<><><>0<>0<>ded381422102017c5b46514a2f844057<>res://.godot/imported/Rectangle 2.png-5f77e97f2b7ea910006d50b3cd956cc2.ctex::
+TracerBounce.png::CompressedTexture2D/CompressedTexture2D::7237106502565133643::1771585386::1771751516::1::::<><><>0<>0<>00e1fda42a8e86b2c7c294040a39aaba<>res://.godot/imported/TracerBounce.png-a033ae5e6de18507dee075d4a865685c.ctex::
+::res://scenes/::1771753088
+ball.gd::GDScript::313339667180800053::1771753060::0::1::::<>CharacterBody2D<><>0<>0<><>::
+ball.tscn::PackedScene::755768806403504223::1771753088::0::1::::<><><>0<>0<><>::uid://dbdyc7jlp34v4::::res://assests/TracerBounce.png<>uid://bugluidojx8xb::::res://assests/Bounce.png<>uid://ep1wnjhlkfab::::res://scenes/ball.gd
+::res://scripts/::1771753081
