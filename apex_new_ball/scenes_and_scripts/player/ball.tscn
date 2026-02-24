@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://k1dnwrhs2s1l"]
+[gd_scene load_steps=5 format=3 uid="uid://k1dnwrhs2s1l"]
 
 [ext_resource type="Texture2D" uid="uid://lkpo82w82rtv" path="res://icons/172.png" id="2_f7cbr"]
 [ext_resource type="Script" uid="uid://ep1wnjhlkfab" path="res://scenes_and_scripts/player/ball.gd" id="3_f7cbr"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cxlvu"]
-load_path = "res://.godot/imported/TracerBounce.png-a033ae5e6de18507dee075d4a865685c.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eew57"]
 animations = [{
@@ -14,14 +11,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_cxlvu")
-}],
-"loop": true,
-"name": &"roll",
 "speed": 5.0
 }]
 
