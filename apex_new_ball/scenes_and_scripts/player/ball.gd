@@ -7,7 +7,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var gravity_scale = 1.0 #замедление падения
 @export var gravity_direction = 1.0 #направление гравитации
-@export var is_flappy_bird = 0
+@export var is_flappy_bird = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var alive = true
 
@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 	
-	if is_flappy_bird != 1:
+	if is_flappy_bird != true:
 		if Input.is_action_pressed("move_up") && (is_on_ceiling() && gravity_direction == -1 || is_on_floor() && gravity_direction == 1):
 			velocity.y = jump * gravity_direction
 	elif Input.is_action_just_pressed("move_up"):
