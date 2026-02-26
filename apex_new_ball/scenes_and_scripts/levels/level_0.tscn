@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://c2xy2wsnu1657"]
 
 [ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax_background.tscn" id="1_jf3u8"]
+[ext_resource type="PackedScene" uid="uid://bpt7dh0iwxb2s" path="res://scenes_and_scripts/player/robo_ball.tscn" id="4_035pl"]
 [ext_resource type="Texture2D" uid="uid://bso83qn71x37e" path="res://assets/1 Tiles/Tileset.png" id="6_dfmxi"]
-[ext_resource type="PackedScene" uid="uid://k1dnwrhs2s1l" path="res://scenes_and_scripts/player/ball.tscn" id="7_m8wqi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwd78"]
 texture = ExtResource("6_dfmxi")
@@ -491,11 +491,13 @@ tile_set = SubResource("TileSet_40rfo")
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(238, 374)
 
-[node name="Ball" parent="Player" instance=ExtResource("7_m8wqi")]
-is_flappy_bird = true
+[node name="RoboBall" parent="Player" instance=ExtResource("4_035pl")]
+position = Vector2(12, 3)
+gravity_direction = -1
 
-[node name="Camera2D" type="Camera2D" parent="Player/Ball"]
+[node name="Camera2D" type="Camera2D" parent="Player/RoboBall"]
 zoom = Vector2(2, 2)
+process_callback = 0
 limit_left = 0
 limit_top = -500
 limit_right = 100000
