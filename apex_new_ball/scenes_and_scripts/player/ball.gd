@@ -15,7 +15,7 @@ func _ready() -> void:
 	velocity = Vector2.ZERO
 	add_to_group("player")
 	$AnimatedSprite2D.play()
-	animated_sprite.flip_h = true
+	#animated_sprite.flip_h = true
 	
 func _physics_process(delta: float) -> void:
 	if not alive:

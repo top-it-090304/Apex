@@ -493,7 +493,8 @@ position = Vector2(238, 374)
 
 [node name="RoboBall" parent="Player" instance=ExtResource("4_035pl")]
 position = Vector2(12, 3)
-gravity_direction = -1
+gravity_direction = 1
+is_flappy_bird = true
 
 [node name="Camera2D" type="Camera2D" parent="Player/RoboBall"]
 zoom = Vector2(2, 2)
