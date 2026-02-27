@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vii3q0jh4knx"
-path="res://.godot/imported/Frame 1.png-41168781bcce4c38240e2d916541c04c.ctex"
+uid="uid://rws8rds575l4"
+path="res://.godot/imported/wood_ball.png-cd4ee4f60ad53c39204e3f1aa3ec5513.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/6 Player/robo_ball/Frame 1.png"
-dest_files=["res://.godot/imported/Frame 1.png-41168781bcce4c38240e2d916541c04c.ctex"]
+source_file="res://assets/6 Player/wood_ball.png"
+dest_files=["res://.godot/imported/wood_ball.png-cd4ee4f60ad53c39204e3f1aa3ec5513.ctex"]
 
 [params]
 

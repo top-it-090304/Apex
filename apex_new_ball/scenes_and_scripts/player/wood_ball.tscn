@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ijlpbtcjt1c8"]
+
+[ext_resource type="PackedScene" uid="uid://k1dnwrhs2s1l" path="res://scenes_and_scripts/player/ball.tscn" id="1_qwy1i"]
+[ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="2_ex3b8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7khwj"]
+atlas = ExtResource("2_ex3b8")
+region = Rect2(630, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r680"]
+atlas = ExtResource("2_ex3b8")
+region = Rect2(0, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w61if"]
+atlas = ExtResource("2_ex3b8")
+region = Rect2(315, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0olhe"]
+atlas = ExtResource("2_ex3b8")
+region = Rect2(945, 0, 315, 316)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_or7bt"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_7khwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r680")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w61if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r680")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_7khwj")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_0olhe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="wood_ball" instance=ExtResource("1_qwy1i")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(9.53674e-07, -0.999997)
+scale = Vector2(0.133333, 0.139241)
+sprite_frames = SubResource("SpriteFrames_or7bt")
+animation = &"default"
+frame_progress = 0.332147
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false

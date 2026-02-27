@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bpt7dh0iwxb2s"]
 
 [ext_resource type="PackedScene" uid="uid://k1dnwrhs2s1l" path="res://scenes_and_scripts/player/ball.tscn" id="1_hfcte"]
-[ext_resource type="Texture2D" uid="uid://vii3q0jh4knx" path="res://assets/6 Player/robo_ball/Frame 1.png" id="2_fgiq2"]
+[ext_resource type="Texture2D" uid="uid://vii3q0jh4knx" path="res://assets/6 Player/robo_ball.png" id="2_fgiq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjvwr"]
 atlas = ExtResource("2_fgiq2")
@@ -120,7 +120,7 @@ animations = [{
 gravity_direction = -1
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(0, 4)
+position = Vector2(0, 3)
 scale = Vector2(0.107579, 0.105364)
 sprite_frames = SubResource("SpriteFrames_1plel")
 frame = 14
