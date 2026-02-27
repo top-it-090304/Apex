@@ -120,7 +120,7 @@ animations = [{
 gravity_direction = -1
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(0, 2)
+position = Vector2(0, 4)
 scale = Vector2(0.107579, 0.105364)
 sprite_frames = SubResource("SpriteFrames_1plel")
 frame = 14

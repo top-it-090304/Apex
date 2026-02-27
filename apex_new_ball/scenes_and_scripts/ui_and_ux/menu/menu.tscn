@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0idc8kfioe68"]
+[gd_scene load_steps=4 format=3 uid="uid://c0idc8kfioe68"]
 
 [ext_resource type="Script" uid="uid://brbkg1on3numn" path="res://scenes_and_scripts/ui_and_ux/menu/menu.gd" id="1_vjb58"]
-[ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax_background.tscn" id="2_con2f"]
+[ext_resource type="PackedScene" uid="uid://7o5ftewgxwys" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_cdrs6"]
+[ext_resource type="Script" uid="uid://bkwxxp2k54ypg" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.gd" id="3_enutd"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")
+
+[node name="Parallax" parent="." instance=ExtResource("2_cdrs6")]
+script = ExtResource("3_enutd")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 427.0
@@ -21,8 +25,6 @@ offset_right = 745.0
 offset_bottom = 374.0
 theme_override_font_sizes/font_size = 30
 text = "Выйти"
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("2_con2f")]
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

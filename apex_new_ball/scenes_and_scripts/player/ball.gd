@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var acceleration = 2500.0 #разгон
-@export var friction = 4500.0 #торможение
+@export var friction = 500.0 #торможение
 @export var jump = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var gravity_scale = 1.0 #замедление падения
@@ -15,7 +15,6 @@ func _ready() -> void:
 	velocity = Vector2.ZERO
 	add_to_group("player")
 	$AnimatedSprite2D.play()
-	#animated_sprite.flip_h = true
 	
 func _physics_process(delta: float) -> void:
 	if not alive:
