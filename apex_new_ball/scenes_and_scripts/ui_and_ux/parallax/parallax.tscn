@@ -13,7 +13,7 @@
 [node name="Parallax" type="Parallax2D"]
 
 [node name="Cloud1" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.2, 1)
+scroll_scale = Vector2(0.05, 1)
 repeat_size = Vector2(1152, 624)
 
 [node name="Clouds1" type="Sprite2D" parent="Cloud1"]
@@ -22,7 +22,7 @@ texture = ExtResource("1_x3jxl")
 centered = false
 
 [node name="Cloud2" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.4, 1)
+scroll_scale = Vector2(0.07, 1)
 repeat_size = Vector2(1152, 0)
 
 [node name="Clouds2" type="Sprite2D" parent="Cloud2"]
@@ -32,7 +32,7 @@ texture = ExtResource("2_rvrtt")
 centered = false
 
 [node name="Cloud3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.7, 1)
+scroll_scale = Vector2(0.2, 1)
 repeat_size = Vector2(1152, 0)
 
 [node name="Clouds3" type="Sprite2D" parent="Cloud3"]
@@ -42,7 +42,7 @@ texture = ExtResource("3_2j2t5")
 centered = false
 
 [node name="Cloud4" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.9, 1)
+scroll_scale = Vector2(0.2, 1)
 repeat_size = Vector2(1152, 0)
 
 [node name="Clouds4" type="Sprite2D" parent="Cloud4"]
