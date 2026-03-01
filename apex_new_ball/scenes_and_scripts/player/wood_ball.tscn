@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ijlpbtcjt1c8"]
+[gd_scene load_steps=9 format=3 uid="uid://ijlpbtcjt1c8"]
 
-[ext_resource type="PackedScene" uid="uid://k1dnwrhs2s1l" path="res://scenes_and_scripts/player/ball.tscn" id="1_qwy1i"]
+[ext_resource type="Script" uid="uid://ep1wnjhlkfab" path="res://scenes_and_scripts/player/ball.gd" id="1_ex3b8"]
 [ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="2_ex3b8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7khwj"]
@@ -45,14 +45,17 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="wood_ball" instance=ExtResource("1_qwy1i")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7khwj"]
+radius = 21.0
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-position = Vector2(9.53674e-07, -0.999997)
+[node name="wood_ball" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_ex3b8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.35525e-20, -1)
 scale = Vector2(0.133333, 0.139241)
 sprite_frames = SubResource("SpriteFrames_or7bt")
-animation = &"default"
-frame_progress = 0.332147
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7khwj")

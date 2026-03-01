@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brbkg1on3numn" path="res://scenes_and_scripts/ui_and_ux/menu/menu.gd" id="1_vjb58"]
 [ext_resource type="PackedScene" uid="uid://7o5ftewgxwys" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_cdrs6"]
-[ext_resource type="Script" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.gd" id="3_enutd"]
+[ext_resource type="Script" uid="uid://bkwxxp2k54ypg" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.gd" id="3_enutd"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")
