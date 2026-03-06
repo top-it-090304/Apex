@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtxlptjo3ssy8"]
+
+[ext_resource type="Script" uid="uid://bhjq7opnfexm5" path="res://scenes_and_scripts/ui_and_ux/screensaver/screensaver.gd" id="1_gng5f"]
+[ext_resource type="Texture2D" uid="uid://cnad6d5w35lph" path="res://assets/icon/Gemini_Generated_Image_qgld4rqgld4rqgld.png" id="1_xgeda"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p4ky1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gng5f"]
+size = Vector2(1152, 648)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gng5f"]
+
+[node name="screensaver" type="Node2D"]
+script = ExtResource("1_gng5f")
+
+[node name="screen" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.818182, 0.861702)
+texture = ExtResource("1_xgeda")
+
+[node name="black_canvas" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1152, 648)
+texture = SubResource("CanvasTexture_p4ky1")
+
+[node name="button" type="TouchScreenButton" parent="."]
+position = Vector2(576, 324)
+shape = SubResource("RectangleShape2D_gng5f")
+
+[node name="Label2" type="Label" parent="button"]
+offset_left = -576.0
+offset_top = -196.0
+offset_right = 576.0
+offset_bottom = -84.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_gng5f")
+
+[node name="Label1" type="Label" parent="button"]
+offset_left = -576.0
+offset_top = -192.0
+offset_right = 576.0
+offset_bottom = -80.0
+theme_override_colors/font_color = Color(0.829935, 0.418992, 0.145489, 1)
+text = "tap to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
