@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjs0ajqocweh4"]
+
+[ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_7fg2n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lpcof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85dah"]
+atlas = ExtResource("1_7fg2n")
+region = Rect2(0, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un8xi"]
+atlas = ExtResource("1_7fg2n")
+region = Rect2(315, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8nxv"]
+atlas = ExtResource("1_7fg2n")
+region = Rect2(630, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y27ut"]
+atlas = ExtResource("1_7fg2n")
+region = Rect2(945, 0, 315, 316)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwseo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85dah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un8xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8nxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y27ut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lpcof")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.065873, 0.0664557)
+sprite_frames = SubResource("SpriteFrames_fwseo")

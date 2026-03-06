@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnvdb4w52yocm"]
+
+[ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_ikt6p"]
+[ext_resource type="Script" uid="uid://3cywrf8bu207" path="res://scenes_and_scripts/player/physics_ball.gd" id="1_sboo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sboo0"]
+atlas = ExtResource("1_ikt6p")
+region = Rect2(0, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wls8"]
+atlas = ExtResource("1_ikt6p")
+region = Rect2(315, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7vs7"]
+atlas = ExtResource("1_ikt6p")
+region = Rect2(630, 0, 315, 316)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hirp"]
+atlas = ExtResource("1_ikt6p")
+region = Rect2(945, 0, 315, 316)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ripn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sboo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wls8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7vs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hirp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo4ne"]
+radius = 27.4591
+
+[node name="physics_ball" type="RigidBody2D"]
+script = ExtResource("1_sboo0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.66893e-06, -1)
+scale = Vector2(0.171429, 0.177215)
+sprite_frames = SubResource("SpriteFrames_4ripn")
+frame_progress = 0.0983769
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wo4ne")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
