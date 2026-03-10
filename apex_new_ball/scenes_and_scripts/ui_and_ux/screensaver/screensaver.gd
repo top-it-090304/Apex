@@ -28,7 +28,6 @@ func _process(_delta: float) -> void:
 			timer1 = 0
 			if $black_canvas.modulate.a <= 0:
 				flag1 = true
-				print(flag1)
 	
 	if flag1 == true && flag2 == false:
 		timer += 1
@@ -37,7 +36,6 @@ func _process(_delta: float) -> void:
 				$button/Label1.modulate.a += 0.1
 				if $button/Label1.modulate.a >= 1:
 					flag2 = true
-					print(flag2)
 				
 			if $button/Label2.modulate.a < 0.7:
 				$button/Label2.modulate.a += 0.07
@@ -52,7 +50,6 @@ func _process(_delta: float) -> void:
 			timer2 = 0
 			if $black_canvas.modulate.a >= 1:
 				flag3 = true
-				print(flag3)
 				
 		if timer2 >= 20 && $button/Label1.modulate.a > 0:
 			$button/Label1.modulate.a -= 0.1
@@ -73,4 +70,3 @@ func _input(event: InputEvent) -> void:
 func _on_screen_pressed() -> void:
 	if flag2 == true:
 		flag2_5 = true
-		print(flag2_5)
