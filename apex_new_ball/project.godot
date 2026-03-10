@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Apex_New_ball"
-run/main_scene="uid://c0idc8kfioe68"
+run/main_scene="uid://dtxlptjo3ssy8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]
