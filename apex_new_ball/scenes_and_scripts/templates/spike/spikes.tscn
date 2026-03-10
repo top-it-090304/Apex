@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjrhudvlhxqe1"]
+
+[ext_resource type="Script" uid="uid://ci2070ofm080a" path="res://scenes_and_scripts/templates/spike/spike.gd" id="1_221h5"]
+[ext_resource type="Texture2D" uid="uid://v4f2t4lageq3" path="res://assets/7 Trap and Weapon/spikes/spike1.png" id="1_3081d"]
+[ext_resource type="Texture2D" uid="uid://m4iegiahh52m" path="res://assets/7 Trap and Weapon/spikes/spike2.png" id="2_4pv3p"]
+[ext_resource type="Texture2D" uid="uid://b4oxit3p8vbms" path="res://assets/7 Trap and Weapon/spikes/spike3.png" id="3_pl5a4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uhkb"]
+size = Vector2(64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0myhq"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("1_3081d")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_4pv3p")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_pl5a4")
+}],
+"loop": true,
+"name": &"spike",
+"speed": 5.0
+}]
+
+[node name="Spikes" type="Area2D"]
+script = ExtResource("1_221h5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1.15)
+shape = SubResource("RectangleShape2D_2uhkb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0myhq")
+animation = &"spike"
+frame_progress = 0.835967

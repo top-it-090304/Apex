@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cns7veoc24rt4"
-path="res://.godot/imported/Flag.png-2e261c384ca4b82350c2d7d74edd4141.ctex"
+uid="uid://v4f2t4lageq3"
+path="res://.godot/imported/spike1.png-d678a6614db926df9cf51b601615b2c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/4 Animated objects/Flag.png"
-dest_files=["res://.godot/imported/Flag.png-2e261c384ca4b82350c2d7d74edd4141.ctex"]
+source_file="res://assets/7 Trap and Weapon/spikes/spike1.png"
+dest_files=["res://.godot/imported/spike1.png-d678a6614db926df9cf51b601615b2c7.ctex"]
 
 [params]
 
