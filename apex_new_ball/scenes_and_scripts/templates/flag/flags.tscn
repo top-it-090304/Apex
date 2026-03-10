@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxcym800wfi20"]
+
+[ext_resource type="Script" uid="uid://moafy0dofpbf" path="res://scenes_and_scripts/templates/flag/flag.gd" id="1_goue8"]
+[ext_resource type="Texture2D" uid="uid://b4ackv42mghte" path="res://assets/4 Animated objects/flags/Flag1.png" id="2_goue8"]
+[ext_resource type="Texture2D" uid="uid://mgdqkfxeedei" path="res://assets/4 Animated objects/flags/Flag2.png" id="3_vfid3"]
+[ext_resource type="Texture2D" uid="uid://sjru44ehvqmb" path="res://assets/4 Animated objects/flags/Flag3.png" id="4_c2rvo"]
+[ext_resource type="Texture2D" uid="uid://dee0rjn148hxb" path="res://assets/4 Animated objects/flags/Flag4.png" id="5_2u1gc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u1gc"]
+size = Vector2(30, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jw53w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_goue8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vfid3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c2rvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2u1gc")
+}],
+"loop": true,
+"name": &"flag",
+"speed": 6.0
+}]
+
+[node name="Flags" type="Area2D"]
+script = ExtResource("1_goue8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2u1gc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jw53w")
+animation = &"flag"
+frame_progress = 0.0526749
