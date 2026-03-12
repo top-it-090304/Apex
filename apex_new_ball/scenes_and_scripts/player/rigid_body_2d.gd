@@ -8,15 +8,18 @@ extends RigidBody2D
 var is_on_floor = false
 var floor_normal = Vector2.UP
 
+# Настройки Coyote Time
+@export var coyote_time_duration = 0.15 # Время в секундах (обычно 0.1 - 0.2)
+var coyote_timer = 0.0
+
 func _ready():
-	can_sleep = false  # Запрещаем засыпать	
+	can_sleep = false
 	$AnimatedSprite2D.play()
 
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
 		flip_gravity()
 	move(state)
-
 
 
 
@@ -39,7 +42,13 @@ func move(state):
 	var direction = Input.get_axis("move_left", "move_right")
 	check_floor_contact(state)
 	
-	# Просто применяем силу
+	# Обновляем таймер Coyote Time
+	if is_on_floor:
+		coyote_timer = coyote_time_duration
+	else:
+		coyote_timer -= state.step
+	
+	# Горизонтальное движение через приложение силы
 	if direction != 0:
 		apply_central_force(Vector2(direction * move_force, 0))
 	
@@ -54,8 +63,10 @@ func move(state):
 		if Input.is_action_just_pressed("move_up"):
 			var gravity_dir = sign(state.total_gravity.y)
 			state.linear_velocity.y = -400 * gravity_dir
-	elif Input.is_action_pressed("move_up") and is_on_floor:
+	elif Input.is_action_pressed("move_up") and coyote_timer > 0:
+		state.linear_velocity.y = 0
 		apply_central_impulse(Vector2(0, -jump_impulse))
+		coyote_timer = 0
 
 
 func flip_gravity():
