@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var move_force = 1500.0
-@export var jump_force = 500.0
+@export var jump_impulse = 500.0
 @export var max_speed = 400.0
 
 var is_on_floor = false
@@ -9,6 +9,7 @@ var floor_normal = Vector2.UP
 
 func _ready():
 	can_sleep = false  # Запрещаем засыпать
+	$AnimatedSprite2D.play()
 
 func _integrate_forces(state):
 	move(state)
@@ -41,7 +42,6 @@ func move(state):
 		state.linear_velocity = vel
 	
 	# Прыжок
-	#if Input.is_action_pressed("move_up") and is_on_floor:
-		## Прыгаем по нормали пола (работает на наклонах!)
-		#apply_central_impulse(-floor_normal * jump_force)
+	if Input.is_action_pressed("move_up") and is_on_floor:
+		apply_central_impulse(Vector2(0, -jump_impulse))
 	

@@ -1,7 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://6e2qiufy6afh"]
+[gd_scene load_steps=10 format=3 uid="uid://6e2qiufy6afh"]
 
 [ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_7fg2n"]
 [ext_resource type="Script" uid="uid://6yi54guic52w" path="res://scenes_and_scripts/player/rigid_body_2d.gd" id="1_trngo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jn7dq"]
+friction = 0.8
+rough = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8nxv"]
+atlas = ExtResource("1_7fg2n")
+region = Rect2(630, 0, 315, 316)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85dah"]
 atlas = ExtResource("1_7fg2n")
@@ -11,10 +19,6 @@ region = Rect2(0, 0, 315, 316)
 atlas = ExtResource("1_7fg2n")
 region = Rect2(315, 0, 315, 316)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8nxv"]
-atlas = ExtResource("1_7fg2n")
-region = Rect2(630, 0, 315, 316)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_y27ut"]
 atlas = ExtResource("1_7fg2n")
 region = Rect2(945, 0, 315, 316)
@@ -22,6 +26,9 @@ region = Rect2(945, 0, 315, 316)
 [sub_resource type="SpriteFrames" id="SpriteFrames_fwseo"]
 animations = [{
 "frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_e8nxv")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_85dah")
 }, {
@@ -29,9 +36,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_un8xi")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_85dah")
+}, {
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_e8nxv")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_y27ut")
 }],
 "loop": true,
@@ -43,9 +53,11 @@ animations = [{
 radius = 21.0
 
 [node name="phisics_ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_jn7dq")
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_trngo")
+jump_impulse = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8.19564e-07, -1)
