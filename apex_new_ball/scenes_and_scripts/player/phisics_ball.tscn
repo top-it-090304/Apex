@@ -53,6 +53,7 @@ animations = [{
 radius = 21.0
 
 [node name="phisics_ball" type="RigidBody2D"]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_jn7dq")
 contact_monitor = true
 max_contacts_reported = 4

@@ -27,9 +27,19 @@ animations = [{
 "loop": true,
 "name": &"flag",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_goue8")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
 }]
 
 [node name="Flags" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_goue8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,5 +47,6 @@ shape = SubResource("RectangleShape2D_2u1gc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jw53w")
-animation = &"flag"
-frame_progress = 0.0526749
+animation = &"static"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -14,6 +14,11 @@ config/name="Apex_New_ball"
 run/main_scene="uid://dtxlptjo3ssy8"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
+[autoload]
+
+Events="*res://scenes_and_scripts/GLOBAL_SCRIPTS/Events.gd"
+GameManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/Game_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -48,6 +53,7 @@ flip_gravity={
 [layer_names]
 
 2d_physics/layer_1="world"
+2d_physics/layer_2="signals"
 2d_physics/layer_3="player"
 
 [rendering]

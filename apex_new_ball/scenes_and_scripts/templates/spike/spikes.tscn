@@ -26,6 +26,8 @@ animations = [{
 }]
 
 [node name="Spikes" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_221h5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,3 +39,5 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0myhq")
 animation = &"spike"
 frame_progress = 0.835967
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
