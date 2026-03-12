@@ -1,29 +1,24 @@
 extends RigidBody2D
 
 @export var move_force = 1500.0
-@export var jump_impulse = 500.0
+@export var jump_impulse = 300.0
 @export var max_speed = 400.0
-@export var is_flappy_bird = true
-#var floor_normal = Vector2.UP
-
-#var gravity_inverted = false  # Флаг инвертированной гравитации
+@export var is_flappy_bird = false
 
 var is_on_floor = false
-var is_on_ceiling = false
-var is_on_wall = false
 var floor_normal = Vector2.UP
-var ceiling_normal = Vector2.ZERO
-
 
 func _ready():
 	can_sleep = false  # Запрещаем засыпать	
 	$AnimatedSprite2D.play()
-	#flip_gravity()   
 
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
 		flip_gravity()
 	move(state)
+
+
+
 
 func check_floor_contact(state):
 	is_on_floor = false
@@ -55,9 +50,13 @@ func move(state):
 		state.linear_velocity = vel
 	
 	# Прыжок
-	if Input.is_action_pressed("move_up") and is_on_floor:
+	if is_flappy_bird:
+		if Input.is_action_just_pressed("move_up"):
+			var gravity_dir = sign(state.total_gravity.y)
+			state.linear_velocity.y = -400 * gravity_dir
+	elif Input.is_action_pressed("move_up") and is_on_floor:
 		apply_central_impulse(Vector2(0, -jump_impulse))
-	
+
 
 func flip_gravity():
 	gravity_scale = gravity_scale * -1

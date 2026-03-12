@@ -57,7 +57,6 @@ physics_material_override = SubResource("PhysicsMaterial_jn7dq")
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_trngo")
-jump_impulse = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8.19564e-07, -1)
