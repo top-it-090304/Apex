@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://c2xy2wsnu1657"]
+[gd_scene load_steps=6 format=4 uid="uid://c2xy2wsnu1657"]
 
 [ext_resource type="PackedScene" uid="uid://6e2qiufy6afh" path="res://scenes_and_scripts/player/phisics_ball.tscn" id="3_jf3u8"]
-[ext_resource type="PackedScene" uid="uid://1x8ao8byd4ls" path="res://scenes_and_scripts/levels/bounce_tiles.tscn" id="4_035pl"]
 [ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="4_w27l7"]
 [ext_resource type="Texture2D" uid="uid://bso83qn71x37e" path="res://assets/1 Tiles/Tileset.png" id="6_dfmxi"]
 
@@ -487,8 +486,6 @@ tile_set = SubResource("TileSet_40rfo")
 position = Vector2(234, 359)
 
 [node name="RigidBody2D" parent="Player" instance=ExtResource("3_jf3u8")]
-move_force = 3000.0
-max_speed = 307.99
 
 [node name="Camera2D" type="Camera2D" parent="Player/RigidBody2D"]
 zoom = Vector2(1.9, 1.9)
@@ -502,11 +499,3 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.0
 drag_bottom_margin = 0.0
-
-[node name="bounce_tiles" parent="." instance=ExtResource("4_035pl")]
-
-[node name="bounce_tiles2" parent="." instance=ExtResource("4_035pl")]
-position = Vector2(444, 560)
-
-[node name="bounce_tiles3" parent="." instance=ExtResource("4_035pl")]
-position = Vector2(475, 560)
