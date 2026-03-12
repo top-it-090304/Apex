@@ -22,16 +22,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	#сброс прозрачности
 	if flag1 != true:
-		timer1 += 10
-		if timer1 >= 40 && $black_canvas.modulate.a > 0:
-			$black_canvas.modulate.a -= 0.02
+		timer1 += 1
+		if timer1 >= 4 && $black_canvas.modulate.a > 0:
+			$black_canvas.modulate.a -= 0.04
 			timer1 = 0
 			if $black_canvas.modulate.a <= 0:
 				flag1 = true
 	
 	if flag1 == true && flag2 == false:
 		timer += 1
-		if timer >= 8:
+		if timer >= 2:
 			if $button/Label1.modulate.a < 1:
 				$button/Label1.modulate.a += 0.1
 				if $button/Label1.modulate.a >= 1:
@@ -43,18 +43,18 @@ func _process(_delta: float) -> void:
 			timer = 0
 	
 	if flag2_5 == true:
-		timer2 += 10
+		timer2 += 1
 		print($black_canvas.modulate.a)
-		if timer2 >= 40 && $black_canvas.modulate.a <= 1:
+		if timer2 >= 4 && $black_canvas.modulate.a <= 1:
 			$black_canvas.modulate.a += 0.04
 			timer2 = 0
 			if $black_canvas.modulate.a >= 1:
 				flag3 = true
 				
-		if timer2 >= 20 && $button/Label1.modulate.a > 0:
+		if timer2 >= 2 && $button/Label1.modulate.a > 0:
 			$button/Label1.modulate.a -= 0.1
 			
-		if timer2 >= 20 && $button/Label1.modulate.a > 0:
+		if timer2 >= 2 && $button/Label1.modulate.a > 0:
 			$button/Label2.modulate.a -= 0.1
 	
 	if flag3 == true:
