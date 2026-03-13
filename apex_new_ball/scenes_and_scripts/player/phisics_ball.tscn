@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://6e2qiufy6afh"]
+[gd_scene load_steps=16 format=3 uid="uid://6e2qiufy6afh"]
 
 [ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_7fg2n"]
 [ext_resource type="Script" uid="uid://6yi54guic52w" path="res://scenes_and_scripts/player/rigid_body_2d.gd" id="1_trngo"]
-[ext_resource type="Texture2D" uid="uid://d1hnjho75ai1y" path="res://assets/8 Button/Left.png" id="3_cj6ub"]
-[ext_resource type="Texture2D" uid="uid://cpwi5hkropqrf" path="res://assets/8 Button/Right.png" id="4_t3ob4"]
-[ext_resource type="Texture2D" uid="uid://dm7q43neijnkn" path="res://assets/8 Button/Up.png" id="5_62wsu"]
+[ext_resource type="Texture2D" uid="uid://ysq3mm8dcyfs" path="res://assets/8 Button/left.png" id="3_dnpka"]
+[ext_resource type="Texture2D" uid="uid://cu56q0mvl3kl2" path="res://assets/8 Button/left_presed.png" id="4_vnwyq"]
+[ext_resource type="Texture2D" uid="uid://bku3mv1hq1qr6" path="res://assets/8 Button/right.png" id="5_n04bv"]
+[ext_resource type="Texture2D" uid="uid://1874tokmdwsx" path="res://assets/8 Button/right_presed.png" id="6_iuqm0"]
+[ext_resource type="Texture2D" uid="uid://cx75ri2gdhicl" path="res://assets/8 Button/up.png" id="7_wsmem"]
+[ext_resource type="Texture2D" uid="uid://bkh0fjd2myeqk" path="res://assets/8 Button/up_presed.png" id="8_dnpka"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jn7dq"]
 friction = 0.8
@@ -73,23 +76,22 @@ shape = SubResource("CircleShape2D_lpcof")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="move_left" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.188235)
 position = Vector2(130, 464)
 scale = Vector2(0.08, 0.08)
-texture_normal = ExtResource("3_cj6ub")
+texture_normal = ExtResource("3_dnpka")
+texture_pressed = ExtResource("4_vnwyq")
 action = "move_left"
 
 [node name="move_right" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.188235)
 position = Vector2(273, 465)
 scale = Vector2(0.08, 0.08)
-texture_normal = ExtResource("4_t3ob4")
+texture_normal = ExtResource("5_n04bv")
+texture_pressed = ExtResource("6_iuqm0")
 action = "move_right"
 
 [node name="move_up" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.188235)
 position = Vector2(901, 451)
 scale = Vector2(0.11, 0.11)
-texture_normal = ExtResource("5_62wsu")
-texture_pressed = ExtResource("5_62wsu")
+texture_normal = ExtResource("7_wsmem")
+texture_pressed = ExtResource("8_dnpka")
 action = "move_up"
