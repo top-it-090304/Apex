@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://6e2qiufy6afh"]
+[gd_scene load_steps=13 format=3 uid="uid://6e2qiufy6afh"]
 
 [ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_7fg2n"]
 [ext_resource type="Script" uid="uid://6yi54guic52w" path="res://scenes_and_scripts/player/rigid_body_2d.gd" id="1_trngo"]
+[ext_resource type="Texture2D" uid="uid://d1hnjho75ai1y" path="res://assets/8 Button/Left.png" id="3_cj6ub"]
+[ext_resource type="Texture2D" uid="uid://cpwi5hkropqrf" path="res://assets/8 Button/Right.png" id="4_t3ob4"]
+[ext_resource type="Texture2D" uid="uid://dm7q43neijnkn" path="res://assets/8 Button/Up.png" id="5_62wsu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jn7dq"]
 friction = 0.8
@@ -66,3 +69,27 @@ sprite_frames = SubResource("SpriteFrames_fwseo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lpcof")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="move_left" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.188235)
+position = Vector2(130, 464)
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("3_cj6ub")
+action = "move_left"
+
+[node name="move_right" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.188235)
+position = Vector2(273, 465)
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("4_t3ob4")
+action = "move_right"
+
+[node name="move_up" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.188235)
+position = Vector2(901, 451)
+scale = Vector2(0.11, 0.11)
+texture_normal = ExtResource("5_62wsu")
+texture_pressed = ExtResource("5_62wsu")
+action = "move_up"
