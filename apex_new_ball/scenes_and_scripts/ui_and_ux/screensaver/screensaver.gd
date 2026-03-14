@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		timer2 += 1
 		print($black_canvas.modulate.a)
 		if timer2 >= 4 && $black_canvas.modulate.a <= 1:
-			$black_canvas.modulate.a += 0.04
+			$black_canvas.modulate.a += 0.06
 			timer2 = 0
 			if $black_canvas.modulate.a >= 1:
 				flag3 = true

@@ -18,5 +18,14 @@ func _process(_delta):
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes_and_scripts/levels/level_0.tscn")
+func _on_play_1_pressed() -> void:
+	SaveManager.slot_save = 0
+	Events.BUTTON_PLAY_PRESSED.emit(Events.BUTTON_PLAY.Play1)
+
+func _on_play_2_pressed() -> void:
+	SaveManager.slot_save = 1
+	Events.BUTTON_PLAY_PRESSED.emit(Events.BUTTON_PLAY.Play2)
+
+func _on_play_3_pressed() -> void:
+	SaveManager.slot_save = 2
+	Events.BUTTON_PLAY_PRESSED.emit(Events.BUTTON_PLAY.Play3)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjrhudvlhxqe1"]
 
 [ext_resource type="Script" uid="uid://ci2070ofm080a" path="res://scenes_and_scripts/templates/spike/spike.gd" id="1_221h5"]
-[ext_resource type="Texture2D" uid="uid://v4f2t4lageq3" path="res://assets/7 Trap and Weapon/spikes/spike1.png" id="1_3081d"]
-[ext_resource type="Texture2D" uid="uid://m4iegiahh52m" path="res://assets/7 Trap and Weapon/spikes/spike2.png" id="2_4pv3p"]
-[ext_resource type="Texture2D" uid="uid://b4oxit3p8vbms" path="res://assets/7 Trap and Weapon/spikes/spike3.png" id="3_pl5a4"]
+[ext_resource type="Texture2D" uid="uid://v4f2t4lageq3" path="res://assets/Tileset dungeon/spikes/spike1.png" id="1_3081d"]
+[ext_resource type="Texture2D" uid="uid://m4iegiahh52m" path="res://assets/Tileset dungeon/spikes/spike2.png" id="2_4pv3p"]
+[ext_resource type="Texture2D" uid="uid://b4oxit3p8vbms" path="res://assets/Tileset dungeon/spikes/spike3.png" id="3_pl5a4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2uhkb"]
 size = Vector2(64, 16)
