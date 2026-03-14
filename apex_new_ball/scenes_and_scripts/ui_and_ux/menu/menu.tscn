@@ -12,26 +12,45 @@ script = ExtResource("1_vjb58")
 [node name="Parallax" parent="." instance=ExtResource("2_cdrs6")]
 script = ExtResource("3_enutd")
 
-[node name="Play" type="Button" parent="."]
-offset_left = 427.0
-offset_top = 192.0
-offset_right = 744.0
-offset_bottom = 258.0
+[node name="Play1" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 195.0
+offset_right = 745.0
+offset_bottom = 261.0
 theme_override_font_sizes/font_size = 30
-text = "Играть"
+text = "Сохранение 1"
+
+[node name="Play2" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 270.0
+offset_right = 745.0
+offset_bottom = 336.0
+theme_override_font_sizes/font_size = 30
+text = "Сохранение 2"
+
+[node name="Play3" type="Button" parent="."]
+offset_left = 428.0
+offset_top = 345.0
+offset_right = 745.0
+offset_bottom = 411.0
+theme_override_font_sizes/font_size = 30
+text = "Сохранение 3"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 428.0
-offset_top = 308.0
+offset_top = 421.0
 offset_right = 745.0
-offset_bottom = 374.0
+offset_bottom = 487.0
 theme_override_font_sizes/font_size = 30
 text = "Выйти"
 
 [node name="black_canvas" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(576, 324)
 scale = Vector2(1152, 648)
 texture = SubResource("CanvasTexture_cdrs6")
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play1" to="." method="_on_play_1_pressed"]
+[connection signal="pressed" from="Play2" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="Play3" to="." method="_on_play_3_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
