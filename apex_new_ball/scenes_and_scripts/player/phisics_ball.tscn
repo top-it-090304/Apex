@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://6e2qiufy6afh"]
+[gd_scene load_steps=17 format=3 uid="uid://6e2qiufy6afh"]
 
 [ext_resource type="Texture2D" uid="uid://rws8rds575l4" path="res://assets/6 Player/wood_ball.png" id="1_7fg2n"]
 [ext_resource type="Script" uid="uid://6yi54guic52w" path="res://scenes_and_scripts/player/rigid_body_2d.gd" id="1_trngo"]
-[ext_resource type="Texture2D" uid="uid://ysq3mm8dcyfs" path="res://assets/8 Button/left.png" id="3_dnpka"]
+[ext_resource type="Texture2D" uid="uid://ysq3mm8dcyfs" path="res://assets/8 Button/Left.png" id="3_dnpka"]
 [ext_resource type="Texture2D" uid="uid://cu56q0mvl3kl2" path="res://assets/8 Button/left_presed.png" id="4_vnwyq"]
-[ext_resource type="Texture2D" uid="uid://bku3mv1hq1qr6" path="res://assets/8 Button/right.png" id="5_n04bv"]
+[ext_resource type="Texture2D" uid="uid://bku3mv1hq1qr6" path="res://assets/8 Button/Right.png" id="5_n04bv"]
 [ext_resource type="Texture2D" uid="uid://1874tokmdwsx" path="res://assets/8 Button/right_presed.png" id="6_iuqm0"]
-[ext_resource type="Texture2D" uid="uid://cx75ri2gdhicl" path="res://assets/8 Button/up.png" id="7_wsmem"]
+[ext_resource type="Texture2D" uid="uid://cx75ri2gdhicl" path="res://assets/8 Button/Up.png" id="7_wsmem"]
 [ext_resource type="Texture2D" uid="uid://bkh0fjd2myeqk" path="res://assets/8 Button/up_presed.png" id="8_dnpka"]
+[ext_resource type="PackedScene" uid="uid://lt0osl61h21d" path="res://scenes_and_scripts/ui_and_ux/status_bar.tscn" id="9_vnwyq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jn7dq"]
 friction = 0.8
@@ -95,3 +96,5 @@ scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("7_wsmem")
 texture_pressed = ExtResource("8_dnpka")
 action = "move_up"
+
+[node name="status_bar" parent="CanvasLayer" instance=ExtResource("9_vnwyq")]

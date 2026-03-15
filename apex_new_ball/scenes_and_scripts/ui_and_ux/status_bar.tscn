@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://lt0osl61h21d"]
+
+[ext_resource type="Texture2D" uid="uid://c3k4r5sykiaaa" path="res://assets/UI/hp_1.png" id="1_go34m"]
+[ext_resource type="FontFile" uid="uid://biq6mam8hcyyb" path="res://assets/Fonts/PlaypenSans-Bold.ttf" id="1_jprh4"]
+[ext_resource type="Texture2D" uid="uid://mgdqkfxeedei" path="res://assets/4 Animated objects/flags/Flag2.png" id="2_l7msu"]
+[ext_resource type="Texture2D" uid="uid://p6gkjol23h7u" path="res://assets/4 Animated objects/coins/Coin3.png" id="4_pmj36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jprh4"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.219608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdi7d"]
+font = ExtResource("1_jprh4")
+font_size = 45
+font_color = Color(0.98, 0.98, 0.98, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmj36"]
+font = ExtResource("1_jprh4")
+font_size = 45
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 547.0
+offset_bottom = 81.0
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jprh4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "X 5"
+label_settings = SubResource("LabelSettings_sdi7d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(55, 40)
+layout_mode = 2
+texture = ExtResource("1_go34m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jprh4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("2_l7msu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_pmj36")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = 550.0
+offset_top = 14.0
+offset_right = 1141.0
+offset_bottom = 83.0
+alignment = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jprh4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_pmj36")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+texture = ExtResource("4_pmj36")
+expand_mode = 1
+stretch_mode = 5
