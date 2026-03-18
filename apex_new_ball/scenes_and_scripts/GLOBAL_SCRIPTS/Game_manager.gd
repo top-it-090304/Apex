@@ -18,9 +18,9 @@ func _ready() -> void:
 			print("не существует ", i)
 			var data = SaveManager.get_default_data()
 			data["player"]["id"] = i+1
-			data["player"]["name"] = ""
+			data["player"]["name"] = "Player" + str(i)
 			data["player"]["score"] = 0
-			data["level"]["scene_number"] = 1
+			data["level"]["scene_number"] = "level1"
 			SaveManager.save_slot(i, data)
 
 func _pause():
@@ -40,6 +40,7 @@ func _collect(sprite):
 
 func _chest(sprite):
 	sprite.animation = "chest"
+	coin += 1
 	print("chest")
 
 func _door(sprite):

@@ -77,21 +77,21 @@ shape = SubResource("CircleShape2D_lpcof")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="move_left" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2(130, 464)
-scale = Vector2(0.08, 0.08)
+position = Vector2(100, 450)
+scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("3_dnpka")
 texture_pressed = ExtResource("4_vnwyq")
 action = "move_left"
 
 [node name="move_right" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2(273, 465)
-scale = Vector2(0.08, 0.08)
+position = Vector2(275, 450)
+scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("5_n04bv")
 texture_pressed = ExtResource("6_iuqm0")
 action = "move_right"
 
 [node name="move_up" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2(901, 451)
+position = Vector2(900, 450)
 scale = Vector2(0.11, 0.11)
 texture_normal = ExtResource("7_wsmem")
 texture_pressed = ExtResource("8_dnpka")
