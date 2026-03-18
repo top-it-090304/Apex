@@ -1,7 +1,7 @@
 extends Node2D
 
 var timer = 0
-@export var flag1 = false
+var flag1 = false
 enum BUTTON_PLAY {Play1, Play2, Play3}
 
 func _ready():

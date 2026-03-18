@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgyf55v3sch17" path="res://assets/4 Animated objects/chests/Chest4.png" id="4_o3wbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpnoc"]
-size = Vector2(26, 16)
+size = Vector2(52, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bac1"]
 animations = [{
@@ -30,6 +30,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_o3wbm")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_orrt2")
 }],
 "loop": true,
@@ -43,10 +51,11 @@ collision_mask = 4
 script = ExtResource("1_gxp4e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-5, -6)
 shape = SubResource("RectangleShape2D_mpnoc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_4bac1")
 animation = &"static"
 
