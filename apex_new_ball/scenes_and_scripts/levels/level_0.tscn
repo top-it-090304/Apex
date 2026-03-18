@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://c2xy2wsnu1657"]
+[gd_scene load_steps=17 format=4 uid="uid://c2xy2wsnu1657"]
 
+[ext_resource type="Script" uid="uid://m0ux2dvcnnx1" path="res://scenes_and_scripts/levels/level_0.gd" id="1_a2ce2"]
 [ext_resource type="PackedScene" uid="uid://6e2qiufy6afh" path="res://scenes_and_scripts/player/phisics_ball.tscn" id="3_jf3u8"]
 [ext_resource type="PackedScene" uid="uid://bxcym800wfi20" path="res://scenes_and_scripts/templates/flag/flags.tscn" id="3_w27l7"]
 [ext_resource type="PackedScene" uid="uid://bjrhudvlhxqe1" path="res://scenes_and_scripts/templates/spike/spikes.tscn" id="4_vm8fs"]
@@ -500,6 +501,7 @@ sources/4 = SubResource("TileSetScenesCollectionSource_sbcyu")
 sources/5 = SubResource("TileSetScenesCollectionSource_5w8nc")
 
 [node name="level0" type="Node2D"]
+script = ExtResource("1_a2ce2")
 
 [node name="Parallax" parent="." instance=ExtResource("4_w27l7")]
 
@@ -509,7 +511,8 @@ tile_map_data = PackedByteArray("AAAAACYAAAABAAEAAAAAACcAAAABAAIAAAAAACgAAAABAAM
 tile_set = SubResource("TileSet_40rfo")
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(234, 359)
+position = Vector2(238, 371)
+metadata/_edit_group_ = true
 
 [node name="RigidBody2D" parent="Player" instance=ExtResource("3_jf3u8")]
 
@@ -525,3 +528,5 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.0
 drag_bottom_margin = 0.0
+
+[node name="Flags" type="Node2D" parent="."]

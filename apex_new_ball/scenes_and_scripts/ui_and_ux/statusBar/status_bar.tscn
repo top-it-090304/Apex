@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://lt0osl61h21d"]
+[gd_scene load_steps=9 format=3 uid="uid://lt0osl61h21d"]
 
-[ext_resource type="Texture2D" uid="uid://c3k4r5sykiaaa" path="res://assets/UI/hp_1.png" id="1_go34m"]
-[ext_resource type="FontFile" uid="uid://biq6mam8hcyyb" path="res://assets/Fonts/PlaypenSans-Bold.ttf" id="1_jprh4"]
-[ext_resource type="Texture2D" uid="uid://mgdqkfxeedei" path="res://assets/4 Animated objects/flags/Flag2.png" id="2_l7msu"]
-[ext_resource type="Texture2D" uid="uid://p6gkjol23h7u" path="res://assets/4 Animated objects/coins/Coin3.png" id="4_pmj36"]
+[ext_resource type="Script" uid="uid://caee2fqwfq75c" path="res://scenes_and_scripts/ui_and_ux/statusBar/status_bar.gd" id="1_6g5nr"]
+[ext_resource type="FontFile" uid="uid://biq6mam8hcyyb" path="res://assets/Fonts/PlaypenSans-Bold.ttf" id="1_kp5lr"]
+[ext_resource type="Texture2D" uid="uid://c3k4r5sykiaaa" path="res://assets/UI/hp_1.png" id="2_6g5nr"]
+[ext_resource type="Texture2D" uid="uid://mgdqkfxeedei" path="res://assets/4 Animated objects/flags/Flag2.png" id="3_6qaey"]
+[ext_resource type="Texture2D" uid="uid://p6gkjol23h7u" path="res://assets/4 Animated objects/coins/Coin3.png" id="4_knm4t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jprh4"]
 content_margin_left = 10.0
@@ -17,21 +18,22 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_sdi7d"]
-font = ExtResource("1_jprh4")
+font = ExtResource("1_kp5lr")
 font_size = 45
 font_color = Color(0.98, 0.98, 0.98, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pmj36"]
-font = ExtResource("1_jprh4")
+font = ExtResource("1_kp5lr")
 font_size = 45
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_6g5nr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 17.0
-offset_top = 12.0
-offset_right = 547.0
-offset_bottom = 81.0
+offset_left = 121.0
+offset_top = 20.0
+offset_right = 651.0
+offset_bottom = 89.0
 theme_override_constants/separation = 20
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
@@ -44,9 +46,8 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Label1" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "X 5"
 label_settings = SubResource("LabelSettings_sdi7d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -54,7 +55,7 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(55, 40)
 layout_mode = 2
-texture = ExtResource("1_go34m")
+texture = ExtResource("2_6g5nr")
 expand_mode = 1
 stretch_mode = 5
 
@@ -71,13 +72,12 @@ layout_mode = 2
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-texture = ExtResource("2_l7msu")
+texture = ExtResource("3_6qaey")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "5/10"
 label_settings = SubResource("LabelSettings_pmj36")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -99,9 +99,8 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/PanelContainer2/MarginContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "5"
 label_settings = SubResource("LabelSettings_pmj36")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,6 +108,6 @@ vertical_alignment = 1
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
-texture = ExtResource("4_pmj36")
+texture = ExtResource("4_knm4t")
 expand_mode = 1
 stretch_mode = 5

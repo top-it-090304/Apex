@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://1874tokmdwsx" path="res://assets/8 Button/right_presed.png" id="6_iuqm0"]
 [ext_resource type="Texture2D" uid="uid://cx75ri2gdhicl" path="res://assets/8 Button/Up.png" id="7_wsmem"]
 [ext_resource type="Texture2D" uid="uid://bkh0fjd2myeqk" path="res://assets/8 Button/up_presed.png" id="8_dnpka"]
-[ext_resource type="PackedScene" uid="uid://lt0osl61h21d" path="res://scenes_and_scripts/ui_and_ux/status_bar.tscn" id="9_vnwyq"]
+[ext_resource type="PackedScene" uid="uid://lt0osl61h21d" path="res://scenes_and_scripts/ui_and_ux/statusBar/status_bar.tscn" id="9_vnwyq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jn7dq"]
 friction = 0.8
