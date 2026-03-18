@@ -17,6 +17,11 @@ var coyote_timer = 0.0
 func _ready():
 	can_sleep = false
 	$AnimatedSprite2D.play()
+	var loaded = SaveManager.load_slot(SaveManager.slot_save)
+	if loaded["level"]["flags_collected_coordinates_level"]:
+		var values = loaded["level"]["checkpoint_position"]
+		global_position = Vector2(values["x"], values["y"])
+	$Camera2D.reset_smoothing()
 
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
@@ -27,7 +32,7 @@ func _integrate_forces(state):
 
 func check_floor_contact(state):
 	is_on_floor = false
-
+	
 	var gravity_dir = state.total_gravity.normalized()
 	floor_normal = -gravity_dir 
 	

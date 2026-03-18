@@ -1,5 +1,8 @@
 extends Node
 
+var coin = 0
+var flag = 0
+
 func _ready() -> void:
 	Events.GAME_ON_PAUSE.connect(_pause)
 	Events.TOUCHING_THE_FLAG.connect(_touch)
@@ -17,6 +20,7 @@ func _ready() -> void:
 			data["player"]["id"] = i+1
 			data["player"]["name"] = ""
 			data["player"]["score"] = 0
+			data["level"]["scene_number"] = 1
 			SaveManager.save_slot(i, data)
 
 func _pause():
@@ -26,10 +30,12 @@ func _pause():
 
 func _touch(sprite):
 	sprite.animation = "flag"
+	flag += 1
 	print("flag")
 
 func _collect(sprite):
 	sprite.modulate.a = 0
+	coin += 1
 	print("coin")
 
 func _chest(sprite):
@@ -40,7 +46,7 @@ func _door(sprite):
 	sprite.animation = "open"
 	print("door")
 
-func _button(number_button: Events.BUTTON_PLAY):
+func _button(number_button):
 	var loading = SaveManager.load_slot(number_button)
 	get_tree().change_scene_to_file(loading["level"]["current_scene"])
 		
