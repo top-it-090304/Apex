@@ -145,7 +145,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-color = Color(0.233925, 0.233925, 0.233925, 0.5)
+color = Color(0.235294, 0.235294, 0.235294, 0.721569)
 
 [node name="Continue2" type="Button" parent="modalWindow2"]
 anchors_preset = 8
