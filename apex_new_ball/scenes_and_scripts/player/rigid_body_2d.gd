@@ -9,6 +9,7 @@ extends RigidBody2D
 
 var is_on_floor = false
 var floor_normal = Vector2.UP
+var spawn_position
 
 # Настройки Coyote Time
 @export var coyote_time_duration = 0.15 # Время в секундах
@@ -16,9 +17,11 @@ var coyote_timer = 0.0
 
 func _ready():
 	can_sleep = false
+	spawn_position = global_position
 	$AnimatedSprite2D.play()
+	print(global_position)
 	var loaded = SaveManager.load_slot(SaveManager.slot_save)
-	if loaded["level"]["flags_collected_coordinates_level"]:
+	if loaded["level"]["checkpoint_position"]["x"] != 0 or loaded["level"]["checkpoint_position"]["y"] != 0:
 		var values = loaded["level"]["checkpoint_position"]
 		global_position = Vector2(values["x"], values["y"])
 	$Camera2D.reset_smoothing()
@@ -27,8 +30,6 @@ func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
 		flip_gravity()
 	move(state)
-
-
 
 func check_floor_contact(state):
 	is_on_floor = false

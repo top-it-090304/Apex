@@ -1,7 +1,5 @@
 extends Node2D
 
-var FLAG_SCENE = preload("res://scenes_and_scripts/templates/flag/flags.tscn")
-
 func _ready() -> void:
 	_spawn_flags()
 
@@ -15,6 +13,9 @@ func _spawn_flags():
 	#endregion
 	
 	#region Добаввляем в сейв информацию о флагах
-	loaded["level"]["flags_total"] = int(data[loaded["level"]["scene_number"]]["flags"])
+	var scene_num = loaded["level"]["scene_number"]
+	var json_key = str(scene_num)
+	loaded["level"]["flags_total"] = int(data[json_key]["flags"])
+	print(loaded["level"]["flags_total"])
 	SaveManager.save_slot(SaveManager.slot_save, loaded)
 	#endregion

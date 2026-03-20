@@ -1,17 +1,17 @@
 {
-	"level1": {
-		"flags": 16,
+	"1": {
+		"flags": 16
 	},
-	"level2": {
-		"flags": 12,
+	"2": {
+		"flags": 12
 	},
-	"level3": {
-		"flags": 21,
+	"3": {
+		"flags": 21
 	},
-	"level4": {
-		"flags": 18,
+	"4": {
+		"flags": 18
 	},
-	"level5": {
-		"flags": 15,
-	},
+	"5": {
+		"flags": 15
+	}
 }

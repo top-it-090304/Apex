@@ -1,14 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnyrolyvyufqe"]
+[gd_scene load_steps=17 format=3 uid="uid://ysduhvodm2ly"]
 
-[ext_resource type="Texture2D" uid="uid://bso83qn71x37e" path="res://assets/1 Tiles/Tileset.png" id="1_il146"]
-[ext_resource type="PackedScene" uid="uid://bjrhudvlhxqe1" path="res://scenes_and_scripts/templates/spike/spikes.tscn" id="2_u1exn"]
-[ext_resource type="PackedScene" uid="uid://bxcym800wfi20" path="res://scenes_and_scripts/templates/flag/flags.tscn" id="3_bjru2"]
-[ext_resource type="PackedScene" uid="uid://dc7amg4m2ekmn" path="res://scenes_and_scripts/templates/coin/coins.tscn" id="4_jbljq"]
-[ext_resource type="PackedScene" uid="uid://cjhirk6d6gl4n" path="res://scenes_and_scripts/templates/door/left_door.tscn" id="5_7hbrf"]
-[ext_resource type="PackedScene" uid="uid://1x48vwrviwfc" path="res://scenes_and_scripts/templates/chest/chest.tscn" id="6_srrua"]
+[ext_resource type="Script" uid="uid://m0ux2dvcnnx1" path="res://scenes_and_scripts/levels/level_0.gd" id="1_tis28"]
+[ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_mkooj"]
+[ext_resource type="Texture2D" uid="uid://bso83qn71x37e" path="res://assets/1 Tiles/Tileset.png" id="3_dn2vy"]
+[ext_resource type="PackedScene" uid="uid://bjrhudvlhxqe1" path="res://scenes_and_scripts/templates/spike/spikes.tscn" id="4_mxkpq"]
+[ext_resource type="PackedScene" uid="uid://bxcym800wfi20" path="res://scenes_and_scripts/templates/flag/flags.tscn" id="5_kwhm8"]
+[ext_resource type="PackedScene" uid="uid://dc7amg4m2ekmn" path="res://scenes_and_scripts/templates/coin/coins.tscn" id="6_s0ndk"]
+[ext_resource type="PackedScene" uid="uid://cjhirk6d6gl4n" path="res://scenes_and_scripts/templates/door/left_door.tscn" id="7_yuq1l"]
+[ext_resource type="PackedScene" uid="uid://1x48vwrviwfc" path="res://scenes_and_scripts/templates/chest/chest.tscn" id="8_6kyqx"]
+[ext_resource type="PackedScene" uid="uid://6e2qiufy6afh" path="res://scenes_and_scripts/player/phisics_ball.tscn" id="9_4b5md"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jbljq"]
-texture = ExtResource("1_il146")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tis28"]
+texture = ExtResource("3_dn2vy")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -470,34 +473,56 @@ texture = ExtResource("1_il146")
 19:11/0 = 0
 19:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_7hbrf"]
-scenes/1/scene = ExtResource("2_u1exn")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mkooj"]
+scenes/1/scene = ExtResource("5_kwhm8")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_srrua"]
-scenes/1/scene = ExtResource("3_bjru2")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dn2vy"]
+scenes/1/scene = ExtResource("4_mxkpq")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4j4e1"]
-scenes/1/scene = ExtResource("4_jbljq")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mxkpq"]
+scenes/1/scene = ExtResource("6_s0ndk")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pajcj"]
-scenes/1/scene = ExtResource("5_7hbrf")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kwhm8"]
+scenes/1/scene = ExtResource("8_6kyqx")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_20eju"]
-scenes/1/scene = ExtResource("6_srrua")
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_s0ndk"]
+scenes/1/scene = ExtResource("7_yuq1l")
 
-[sub_resource type="TileSet" id="TileSet_4j4e1"]
+[sub_resource type="TileSet" id="TileSet_yuq1l"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 4
 custom_data_layer_0/name = "trampoline"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_jbljq")
-sources/1 = SubResource("TileSetScenesCollectionSource_7hbrf")
-sources/2 = SubResource("TileSetScenesCollectionSource_srrua")
-sources/3 = SubResource("TileSetScenesCollectionSource_4j4e1")
-sources/4 = SubResource("TileSetScenesCollectionSource_pajcj")
-sources/5 = SubResource("TileSetScenesCollectionSource_20eju")
+sources/0 = SubResource("TileSetAtlasSource_tis28")
+sources/1 = SubResource("TileSetScenesCollectionSource_mkooj")
+sources/2 = SubResource("TileSetScenesCollectionSource_dn2vy")
+sources/3 = SubResource("TileSetScenesCollectionSource_mxkpq")
+sources/4 = SubResource("TileSetScenesCollectionSource_kwhm8")
+sources/5 = SubResource("TileSetScenesCollectionSource_s0ndk")
 
-[node name="TileMapLayer" type="Node2D"]
+[node name="levelcopy" type="Node2D"]
+script = ExtResource("1_tis28")
+
+[node name="Parallax" parent="." instance=ExtResource("2_mkooj")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_4j4e1")
+z_index = 2
+tile_set = SubResource("TileSet_yuq1l")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(431, 423)
+
+[node name="RigidBody2D" parent="Player" instance=ExtResource("9_4b5md")]
+
+[node name="Camera2D" type="Camera2D" parent="Player/RigidBody2D"]
+zoom = Vector2(1.9, 1.9)
+process_callback = 0
+limit_left = 0
+limit_top = -2000
+limit_right = 100000
+limit_bottom = 656
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.0
+drag_bottom_margin = 0.0

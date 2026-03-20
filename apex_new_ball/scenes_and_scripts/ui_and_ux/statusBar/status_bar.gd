@@ -4,6 +4,10 @@ extends Node
 @onready var label2 = $HBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/Label2
 @onready var label3 = $HBoxContainer2/PanelContainer2/MarginContainer/HBoxContainer/Label3
 
+@onready var modal = $modalWindow2
+@onready var continue1 = $modalWindow2/Continue
+@onready var continue2 = $modalWindow2/Continue2
+
 var flag = false
 
 func _ready() -> void:
@@ -13,6 +17,15 @@ func _ready() -> void:
 	label2.text = str(_loaded["level"]["flags_collected"]) + "/" + str(_loaded["level"]["flags_total"])
 	label3.text = str(_loaded["player"]["score"])
 	#endregion
+	
+	modal.visible = false
+	$modalWindow2/Continue.process_mode = Node.PROCESS_MODE_ALWAYS
+	$modalWindow2/Continue2.process_mode = Node.PROCESS_MODE_ALWAYS
+	$modalWindow2/QuitMenu.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	Events.SHOW_PAUSE_MODAL.connect(_show_modal)
+	Events.GAME_ON_LOSE.connect(_lose_modal)
+	Events.HIDE_PAUSE_MODAL.connect(_hide_modal)
 
 func _process(_delta: float) -> void:
 	#region Добавляем информацию о флагах в статус бар так как _ready() срабатывает быстрее прочтения .json 
@@ -35,3 +48,51 @@ func _process(_delta: float) -> void:
 		label2.text = str(_loaded["level"]["flags_collected"]) + "/" + str(_loaded["level"]["flags_total"])
 		GameManager.flag -= 1
 	#endregion
+	
+	#region
+	if GameManager.live > 0:
+		var _loaded = SaveManager.load_slot(SaveManager.slot_save)
+		label1.text = "x " + str(_loaded["player"]["lives"])
+		GameManager.live -= 1
+	#endregion
+
+func _on_pause_pressed() -> void:
+	_show_modal()
+
+func _on_continue_pressed() -> void:
+	_hide_modal()
+
+func _on_continue_2_pressed() -> void:
+	Events.PLAYER_RESPAWN.emit()
+	_hide_modal()
+	
+
+func _on_quit_menu_pressed() -> void:
+	_hide_modal()
+	
+	var _loaded = SaveManager.load_slot(SaveManager.slot_save)
+	if _loaded["player"]["lives"] < 1:
+		SaveManager.delete_slot(SaveManager.slot_save)
+		print("Сейв удален (0 жизней)")
+	
+	get_tree().change_scene_to_file("res://scenes_and_scripts/ui_and_ux/menu/menu.tscn")
+
+func _show_modal() -> void:
+	get_tree().paused = true
+	continue2.visible = false
+	continue1.visible = true
+	modal.visible = true
+
+func _lose_modal() -> void:
+	get_tree().paused = true
+	continue1.visible = false
+	var _loaded = SaveManager.load_slot(SaveManager.slot_save)
+	if _loaded["player"]["lives"] < 1:
+		continue2.visible = false
+	else:
+		continue2.visible = true
+	modal.visible = true
+
+func _hide_modal() -> void:
+	get_tree().paused = false
+	modal.visible = false
