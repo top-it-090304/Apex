@@ -103,7 +103,7 @@ func get_default_data() -> Dictionary:
 		},
 		"level": {
 			"scene_number": 1,
-			"current_scene": "res://scenes_and_scripts/levels/level_0.tscn",
+			"current_scene": "res://scenes_and_scripts/levels/level_1.tscn",
 			"checkpoint_position": {"x": 0, "y": 0},
 			"flags_total": 0,
 			"flags_collected": 0,
