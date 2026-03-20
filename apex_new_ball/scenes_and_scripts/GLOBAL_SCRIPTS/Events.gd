@@ -1,7 +1,13 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal GAME_ON_PAUSE
+signal SHOW_PAUSE_MODAL
+
+@warning_ignore("unused_signal")
+signal HIDE_PAUSE_MODAL
+
+@warning_ignore("unused_signal")
+signal GAME_ON_LOSE
 
 @warning_ignore("unused_signal")
 signal TOUCHING_THE_FLAG(sprite)
@@ -20,3 +26,6 @@ signal OPEN_THE_DOOR(sprite)
 
 @warning_ignore("unused_signal")
 signal BUTTON_PLAY_PRESSED(button)
+
+@warning_ignore("unused_signal")
+signal PLAYER_RESPAWN

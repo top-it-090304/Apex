@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://lt0osl61h21d"]
+[gd_scene load_steps=10 format=3 uid="uid://lt0osl61h21d"]
 
 [ext_resource type="Script" uid="uid://caee2fqwfq75c" path="res://scenes_and_scripts/ui_and_ux/statusBar/status_bar.gd" id="1_6g5nr"]
 [ext_resource type="FontFile" uid="uid://biq6mam8hcyyb" path="res://assets/Fonts/PlaypenSans-Bold.ttf" id="1_kp5lr"]
 [ext_resource type="Texture2D" uid="uid://c3k4r5sykiaaa" path="res://assets/UI/hp_1.png" id="2_6g5nr"]
 [ext_resource type="Texture2D" uid="uid://mgdqkfxeedei" path="res://assets/4 Animated objects/flags/Flag2.png" id="3_6qaey"]
 [ext_resource type="Texture2D" uid="uid://p6gkjol23h7u" path="res://assets/4 Animated objects/coins/Coin3.png" id="4_knm4t"]
+[ext_resource type="Texture2D" uid="uid://de33cul7riqgl" path="res://assets/8 Button/Pause.png" id="6_6qaey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jprh4"]
 content_margin_left = 10.0
@@ -16,6 +17,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.690196)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sdi7d"]
 font = ExtResource("1_kp5lr")
@@ -30,9 +32,9 @@ font_size = 45
 script = ExtResource("1_6g5nr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 121.0
+offset_left = 108.0
 offset_top = 20.0
-offset_right = 651.0
+offset_right = 638.0
 offset_bottom = 89.0
 theme_override_constants/separation = 20
 
@@ -83,10 +85,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-offset_left = 550.0
-offset_top = 14.0
-offset_right = 1141.0
-offset_bottom = 83.0
+offset_left = 541.0
+offset_top = 20.0
+offset_right = 1132.0
+offset_bottom = 89.0
 alignment = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
@@ -111,3 +113,86 @@ layout_mode = 2
 texture = ExtResource("4_knm4t")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 89.0
+alignment = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jprh4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer3/PanelContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer3/PanelContainer3/MarginContainer"]
+layout_mode = 2
+
+[node name="Pause" type="Button" parent="HBoxContainer3/PanelContainer3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("6_6qaey")
+flat = true
+icon_alignment = 1
+
+[node name="modalWindow2" type="CanvasLayer" parent="."]
+
+[node name="darkness" type="ColorRect" parent="modalWindow2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0.233925, 0.233925, 0.233925, 0.5)
+
+[node name="Continue2" type="Button" parent="modalWindow2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -79.0
+offset_right = 159.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Возродится"
+
+[node name="Continue" type="Button" parent="modalWindow2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -79.0
+offset_right = 159.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Продолжить"
+
+[node name="QuitMenu" type="Button" parent="modalWindow2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = 12.0
+offset_right = 158.5
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Выйти"
+
+[connection signal="pressed" from="HBoxContainer3/PanelContainer3/MarginContainer/HBoxContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="modalWindow2/Continue2" to="." method="_on_continue_2_pressed"]
+[connection signal="pressed" from="modalWindow2/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="modalWindow2/QuitMenu" to="." method="_on_quit_menu_pressed"]

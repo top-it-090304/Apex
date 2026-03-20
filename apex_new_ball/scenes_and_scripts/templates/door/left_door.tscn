@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjhirk6d6gl4n"]
 
-[ext_resource type="Script" uid="uid://kbama6d8dxck" path="res://scenes_and_scripts/templates/door/left_door.gd" id="1_6ijor"]
+[ext_resource type="Script" uid="uid://kbama6d8dxck" path="res://scenes_and_scripts/templates/door/door.gd" id="1_6ijor"]
 [ext_resource type="Texture2D" uid="uid://carh2lckyv4jy" path="res://assets/Tileset dungeon/door/door1_left.png" id="1_rcvvx"]
 [ext_resource type="Texture2D" uid="uid://bcij7a8wvsrc4" path="res://assets/Tileset dungeon/door/door2_left.png" id="2_6ijor"]
 
