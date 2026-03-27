@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var is_flappy_bird = false
 @export var air_rotation_speed = 6.0  # Максимальная скорость вращения при движении в воздухе
 @export var rotation_accel = 1      # Шаг ускорения вращения в воздухе
-@export var acceleration_speed = 4.0  # Скорость нарастания силы (чем меньше, тем плавнее)
+@export var acceleration_speed = 5.0  # Скорость нарастания силы (чем меньше, тем плавнее)
 
 var is_on_floor = false
 var floor_normal = Vector2.UP
@@ -23,11 +23,14 @@ func _ready():
 	$AnimatedSprite2D.play()
 	print(global_position)
 	var loaded = SaveManager.load_slot(SaveManager.slot_save)
-	if loaded["level"]["checkpoint_position"]["x"] != 0 or loaded["level"]["checkpoint_position"]["y"] != 0:
+	if loaded["level"]["checkpoint_position"]["x"] !=0 or loaded["level"]["checkpoint_position"]["y"] !=0:
 		var values = loaded["level"]["checkpoint_position"]
 		global_position = Vector2(values["x"], values["y"])
 	$Camera2D.reset_smoothing()
-
+	_apply_adaptive_touch_ui()
+	get_viewport().size_changed.connect(_apply_adaptive_touch_ui)
+	
+	
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
 		flip_gravity()
@@ -91,7 +94,36 @@ func move(state):
 		coyote_timer = 0
 
 
+func _apply_adaptive_touch_ui():
+	if not has_node("CanvasLayer/move_left") or not has_node("CanvasLayer/move_right") or not has_node("CanvasLayer/move_up"):
+		return
+	
+	var safe_rect = _get_safe_area_rect()
+	var safe_pos = safe_rect.position
+	var safe_size = safe_rect.size
+	
+	var min_side = min(safe_size.x, safe_size.y)
+	var button_scale = clamp(min_side /900.0,0.10,0.20)
+	var margin = clamp(min_side *0.03,18.0,56.0)
+	var spacing = clamp(min_side *0.10,72.0,140.0)
+	
+	var left_btn = $CanvasLayer/move_left
+	var right_btn = $CanvasLayer/move_right
+	var up_btn = $CanvasLayer/move_up
+	
+	left_btn.scale = Vector2(button_scale, button_scale)
+	right_btn.scale = Vector2(button_scale, button_scale)
+	up_btn.scale = Vector2(button_scale *1.15, button_scale *1.15)
+	
+	left_btn.position = Vector2(safe_pos.x + margin, safe_pos.y + safe_size.y - margin - left_btn.texture_normal.get_size().y * left_btn.scale.y)
+	right_btn.position = Vector2(left_btn.position.x + spacing + left_btn.texture_normal.get_size().x * left_btn.scale.x, left_btn.position.y)
+	up_btn.position = Vector2(safe_pos.x + safe_size.x - margin - up_btn.texture_normal.get_size().x * up_btn.scale.x, safe_pos.y + safe_size.y - margin - up_btn.texture_normal.get_size().y * up_btn.scale.y)
+
+func _get_safe_area_rect() -> Rect2:
+	return get_viewport().get_visible_rect()
+
+
 func flip_gravity():
 	gravity_scale = gravity_scale * -1
-	floor_normal = Vector2.DOWN if gravity_scale < 0  else Vector2.UP
+	floor_normal = Vector2.DOWN if gravity_scale <0 else Vector2.UP
 	jump_impulse = jump_impulse * -1
