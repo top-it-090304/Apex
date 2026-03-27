@@ -1,14 +1,16 @@
 extends RigidBody2D
 
 @export var move_force = 3000
-@export var jump_impulse = 500.0
+@export var jump_impulse = 550.0
 @export var max_speed = 300.0
 @export var is_flappy_bird = false
-@export var air_rotation_speed = 5.0  # Максимальная скорость вращения при движении в воздухе
-@export var rotation_accel = 0.5      # Шаг ускорения вращения в воздухе
+@export var air_rotation_speed = 6.0  # Максимальная скорость вращения при движении в воздухе
+@export var rotation_accel = 1      # Шаг ускорения вращения в воздухе
+@export var acceleration_speed = 4.0  # Скорость нарастания силы (чем меньше, тем плавнее)
 
 var is_on_floor = false
 var floor_normal = Vector2.UP
+var current_force_multiplier = 0.0
 var spawn_position
 
 # Настройки Coyote Time
@@ -58,7 +60,10 @@ func move(state):
 	
 	# Горизонтальное движение через приложение силы
 	if direction != 0:
-		apply_central_force(Vector2(direction * move_force, 0))
+		current_force_multiplier = move_toward(current_force_multiplier, 1.0, acceleration_speed * state.step)
+		apply_central_force(Vector2(direction * move_force * current_force_multiplier, 0))
+	else:
+		current_force_multiplier = 0.0
 		
 	if not is_on_floor:
 		var target_angular_vel = direction * air_rotation_speed
