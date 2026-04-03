@@ -7,6 +7,13 @@ extends Parallax2D
 ## добавляем физические копии спрайта по repeat_size.x (совпадает с шириной тайла 576*2).
 @export var extra_repeat_tiles: int = 2
 
+## Нижний край «земли»/деревьев в локальных координатах корня Parallax (нижняя граница слоёв Surface при scale=2).
+## Нужен меню и другим сценам, чтобы привязать фон к низу вьюпорта: position.y = viewport_bottom - anchor_bottom_extent.
+@export var anchor_bottom_extent: float = 648.0
+
+func get_anchor_bottom_extent() -> float:
+	return anchor_bottom_extent
+
 func _ready() -> void:
 	if autoscroll_surfaces:
 		$Surface1.autoscroll = Vector2(-10, 0)
