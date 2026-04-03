@@ -1,16 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0idc8kfioe68"]
+[gd_scene load_steps=4 format=3 uid="uid://c0idc8kfioe68"]
 
 [ext_resource type="Script" uid="uid://brbkg1on3numn" path="res://scenes_and_scripts/ui_and_ux/menu/menu.gd" id="1_vjb58"]
 [ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_cdrs6"]
-[ext_resource type="Script" uid="uid://bkwxxp2k54ypg" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.gd" id="3_enutd"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cdrs6"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")
 
+[node name="Backdrop" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BackdropRoot" type="Control" parent="Backdrop"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Backdrop/BackdropRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118, 0.157, 0.204, 1)
+
 [node name="Parallax" parent="." instance=ExtResource("2_cdrs6")]
-script = ExtResource("3_enutd")
+autoscroll_surfaces = true
 
 [node name="Play1" type="Button" parent="."]
 offset_left = 428.0

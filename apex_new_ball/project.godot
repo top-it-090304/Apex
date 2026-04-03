@@ -22,7 +22,10 @@ SaveManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/SAVE_manager.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
