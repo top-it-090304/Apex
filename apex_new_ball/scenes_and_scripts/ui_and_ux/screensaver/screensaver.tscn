@@ -26,21 +26,12 @@ scale = Vector2(1152, 648)
 texture = SubResource("CanvasTexture_p4ky1")
 
 [node name="button" type="TouchScreenButton" parent="."]
-position = Vector2(576, 324)
 shape = SubResource("RectangleShape2D_gng5f")
 
 [node name="Label2" type="Label" parent="button"]
-offset_left = -576.0
-offset_top = -196.0
-offset_right = 576.0
-offset_bottom = -84.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_gng5f")
 
 [node name="Label1" type="Label" parent="button"]
-offset_left = -576.0
-offset_top = -195.0
-offset_right = 576.0
-offset_bottom = -83.0
 theme_override_colors/font_color = Color(0.593065, 0.181831, 0.128269, 1)
 theme_override_fonts/font = ExtResource("3_p4ky1")
 text = "tap to play"

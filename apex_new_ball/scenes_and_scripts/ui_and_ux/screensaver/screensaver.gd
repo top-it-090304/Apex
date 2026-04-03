@@ -60,8 +60,8 @@ func _apply_layout() -> void:
 	var label_h: float = clampf(112.0 * _layout_scale(), 72.0, 160.0)
 	var top_y: float = r.size.y * 0.34
 	for lbl in [$button/Label1, $button/Label2]:
-		lbl.offset_left = -r.size.x * 0.5
-		lbl.offset_right = r.size.x * 0.5
+		lbl.offset_left = 0
+		lbl.offset_right = r.size.x
 		lbl.offset_top = top_y
 		lbl.offset_bottom = top_y + label_h
 
