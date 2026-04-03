@@ -17,6 +17,22 @@ var spawn_position
 @export var coyote_time_duration = 0.15 # Время в секундах
 var coyote_timer = 0.0
 
+# Сенсорные кнопки (CanvasLayer на игроке): отступы и размер.
+@export_group("Touch UI")
+@export var touch_padding_left_extra: float = 50.0
+@export var touch_padding_right_extra: float = 50.0
+@export var touch_margin_ratio: float = 0.035
+## Базовый margin от нижнего края (и база для расчёта; горизонтальные доп. — только поля выше).
+@export var touch_margin_min: float = 22.0
+@export var touch_margin_max: float = 64.0
+@export var touch_spacing_ratio: float = 0.1 # Расстояние между левой и правой кнопкой
+@export var touch_spacing_min: float = 72.0
+@export var touch_spacing_max: float = 140.0
+@export var touch_scale_reference_side: float = 1200.0
+@export var touch_scale_min: float = 0.06
+@export var touch_scale_max: float = 0.12
+@export var touch_jump_scale_mul: float = 1.5 # Множитель для кнопки прыжка
+
 func _ready():
 	can_sleep = false
 	spawn_position = global_position
@@ -103,9 +119,10 @@ func _apply_adaptive_touch_ui():
 	var safe_size = safe_rect.size
 	
 	var min_side = min(safe_size.x, safe_size.y)
-	var button_scale = clamp(min_side / 1200.0, 0.06, 0.12)
-	var margin = clamp(min_side *0.03,18.0,56.0)
-	var spacing = clamp(min_side *0.10,72.0,140.0)
+	var ref: float = maxf(touch_scale_reference_side, 1.0)
+	var button_scale: float = clamp(min_side / ref, touch_scale_min, touch_scale_max)
+	var margin_bottom: float = clamp(min_side * touch_margin_ratio, touch_margin_min, touch_margin_max)
+	var spacing: float = clamp(min_side * touch_spacing_ratio, touch_spacing_min, touch_spacing_max)
 	
 	var left_btn = $CanvasLayer/move_left
 	var right_btn = $CanvasLayer/move_right
@@ -113,11 +130,17 @@ func _apply_adaptive_touch_ui():
 	
 	left_btn.scale = Vector2(button_scale, button_scale)
 	right_btn.scale = Vector2(button_scale, button_scale)
-	up_btn.scale = Vector2(button_scale *1.15, button_scale *1.15)
+	up_btn.scale = Vector2(button_scale * touch_jump_scale_mul, button_scale * touch_jump_scale_mul)
 	
-	left_btn.position = Vector2(safe_pos.x + margin, safe_pos.y + safe_size.y - margin - left_btn.texture_normal.get_size().y * left_btn.scale.y)
-	right_btn.position = Vector2(left_btn.position.x + spacing + left_btn.texture_normal.get_size().x * left_btn.scale.x, left_btn.position.y)
-	up_btn.position = Vector2(safe_pos.x + safe_size.x - margin - up_btn.texture_normal.get_size().x * up_btn.scale.x, safe_pos.y + safe_size.y - margin - up_btn.texture_normal.get_size().y * up_btn.scale.y)
+	var left_x: float = safe_pos.x + margin_bottom + touch_padding_left_extra
+	var bottom_y: float = safe_pos.y + safe_size.y - margin_bottom - left_btn.texture_normal.get_size().y * left_btn.scale.y
+	left_btn.position = Vector2(left_x, bottom_y)
+	right_btn.position = Vector2(left_btn.position.x + spacing + left_btn.texture_normal.get_size().x * left_btn.scale.x, bottom_y)
+	var up_w: float = up_btn.texture_normal.get_size().x * up_btn.scale.x
+	var up_h: float = up_btn.texture_normal.get_size().y * up_btn.scale.y
+	var up_x: float = safe_pos.x + safe_size.x - margin_bottom - touch_padding_right_extra - up_w
+	var up_bottom_y: float = safe_pos.y + safe_size.y - margin_bottom - up_h
+	up_btn.position = Vector2(up_x, up_bottom_y)
 
 func _get_safe_area_rect() -> Rect2:
 	return get_viewport().get_visible_rect()
