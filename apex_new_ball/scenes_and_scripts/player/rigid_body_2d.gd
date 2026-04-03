@@ -103,7 +103,7 @@ func _apply_adaptive_touch_ui():
 	var safe_size = safe_rect.size
 	
 	var min_side = min(safe_size.x, safe_size.y)
-	var button_scale = clamp(min_side /900.0,0.10,0.20)
+	var button_scale = clamp(min_side / 1200.0, 0.06, 0.12)
 	var margin = clamp(min_side *0.03,18.0,56.0)
 	var spacing = clamp(min_side *0.10,72.0,140.0)
 	
