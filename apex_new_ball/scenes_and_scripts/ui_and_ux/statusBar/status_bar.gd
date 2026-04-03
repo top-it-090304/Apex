@@ -66,9 +66,8 @@ func _on_continue_pressed() -> void:
 	_hide_modal()
 
 func _on_continue_2_pressed() -> void:
-	Events.PLAYER_RESPAWN.emit()
 	_hide_modal()
-	
+	Events.PLAYER_RESPAWN.emit()
 
 func _on_quit_menu_pressed() -> void:
 	_hide_modal()

@@ -34,6 +34,7 @@ var coyote_timer = 0.0
 @export var touch_jump_scale_mul: float = 1.5 # Множитель для кнопки прыжка
 
 func _ready():
+	process_mode = PROCESS_MODE_ALWAYS
 	can_sleep = false
 	spawn_position = global_position
 	$AnimatedSprite2D.play()
@@ -45,8 +46,8 @@ func _ready():
 	$Camera2D.reset_smoothing()
 	_apply_adaptive_touch_ui()
 	get_viewport().size_changed.connect(_apply_adaptive_touch_ui)
-	
-	
+	Events.PLAYER_RESPAWN.connect(_respawn_checkpoint)
+
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
 		flip_gravity()
@@ -65,7 +66,6 @@ func check_floor_contact(state):
 			is_on_floor = true
 			floor_normal = contact_normal
 			break
-
 
 func move(state):
 	var direction = Input.get_axis("move_left", "move_right")
@@ -108,7 +108,7 @@ func move(state):
 		state.linear_velocity.y = 0
 		apply_central_impulse(Vector2(0, -jump_impulse))
 		coyote_timer = 0
-
+    
 
 func _apply_adaptive_touch_ui():
 	if not has_node("CanvasLayer/move_left") or not has_node("CanvasLayer/move_right") or not has_node("CanvasLayer/move_up"):
@@ -145,8 +145,36 @@ func _apply_adaptive_touch_ui():
 func _get_safe_area_rect() -> Rect2:
 	return get_viewport().get_visible_rect()
 
-
 func flip_gravity():
 	gravity_scale = gravity_scale * -1
 	floor_normal = Vector2.DOWN if gravity_scale <0 else Vector2.UP
 	jump_impulse = jump_impulse * -1
+
+#region
+func _respawn_checkpoint():
+	freeze = true
+	sleeping = true
+	linear_velocity = Vector2.ZERO
+	angular_velocity = 0
+	
+	var target: Vector2
+	var loads = SaveManager.load_slot(SaveManager.slot_save)
+	if loads["level"]["checkpoint_position"]["x"] != 0 or loads["level"]["checkpoint_position"]["y"] != 0:
+		var values = loads["level"]["checkpoint_position"]
+		target = Vector2(values["x"], values["y"])
+	else: 
+		target = spawn_position
+	
+	$Camera2D.position_smoothing_enabled = false
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUINT) 
+	tween.tween_property(self, "global_position", target, 1.4)
+	tween.finished.connect(func():
+		$Camera2D.reset_smoothing()
+		$Camera2D.position_smoothing_enabled = true
+		freeze = false
+		sleeping = false
+	)
+#endregion
