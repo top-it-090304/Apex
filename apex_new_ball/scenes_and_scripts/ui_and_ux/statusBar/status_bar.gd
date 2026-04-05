@@ -81,12 +81,14 @@ func _on_quit_menu_pressed() -> void:
 
 func _show_modal() -> void:
 	get_tree().paused = true
+	MusicManager.set_paused(true)
 	continue2.visible = false
 	continue1.visible = true
 	modal.visible = true
 
 func _lose_modal() -> void:
 	get_tree().paused = true
+	MusicManager.set_paused(true)
 	continue1.visible = false
 	var _loaded = SaveManager.load_slot(SaveManager.slot_save)
 	if _loaded["player"]["lives"] < 1:
@@ -97,6 +99,7 @@ func _lose_modal() -> void:
 
 func _hide_modal() -> void:
 	get_tree().paused = false
+	MusicManager.set_paused(false)
 	modal.visible = false
 
 func _apply_adaptive_layout() -> void:

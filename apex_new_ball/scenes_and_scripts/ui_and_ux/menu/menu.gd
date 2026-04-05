@@ -8,6 +8,8 @@ const _REF_W := 1280.0
 const _REF_H := 720.0
 
 func _ready():
+	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg")
+
 	print("=== MENU STARTED ===")
 	$black_canvas.modulate = Color.BLACK
 	get_viewport().size_changed.connect(_reflow_menu)

@@ -23,8 +23,11 @@ func _ready() -> void:
 
 	current_player = player1
 
+func set_paused(is_paused: bool):
+	player1.stream_paused = is_paused
+	player2.stream_paused = is_paused
+
 func play_track(path: String):
-	# Если трек уже играет — ничего не делаем
 	if current_track_path == path:
 		return
 
@@ -33,36 +36,27 @@ func play_track(path: String):
 		print("MusicManager: Ошибка загрузки -> ", path)
 		return
 
-	# Настройка зацикливания
 	if new_stream is AudioStreamOggVorbis:
 		new_stream.loop = true
 	elif new_stream is AudioStreamWAV:
 		new_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 
-	# Определяем, какой плеер будет следующим, а какой затухающим
 	var next_player = player2 if current_player == player1 else player1
 	var prev_player = current_player
 
-	# Настраиваем новый трек
 	next_player.stream = new_stream
-	next_player.volume_db = -80 # Начинаем с тишины
+	next_player.volume_db = -80
 	next_player.play()
 
-	# Плавная анимация громкости (Tween)
 	var tween = create_tween().set_parallel(true)
-
-	# Новый трек становится громче
 	tween.tween_property(next_player, "volume_db", 0.0, fade_duration).set_trans(Tween.TRANS_SINE)
 
-	# Старый трек затихает
 	if prev_player.playing:
 		tween.tween_property(prev_player, "volume_db", -80.0, fade_duration).set_trans(Tween.TRANS_SINE)
-		# Останавливаем старый плеер только после завершения затухания
 		tween.chain().tween_callback(prev_player.stop)
 
 	current_player = next_player
 	current_track_path = path
-	print("MusicManager: Переход на трек -> ", path)
 
 func stop_all(duration: float = 1.0):
 	var tween = create_tween().set_parallel(true)
