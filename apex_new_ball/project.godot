@@ -20,6 +20,7 @@ Events="*res://scenes_and_scripts/GLOBAL_SCRIPTS/Events.gd"
 GameManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/Game_manager.gd"
 SaveManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/SAVE_manager.gd"
 MusicManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/MusicManager.gd"
+SFXManager="*res://scenes_and_scripts/GLOBAL_SCRIPTS/SFXManager.gd"
 
 [display]
 

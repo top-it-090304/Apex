@@ -6,9 +6,15 @@ var player2: AudioStreamPlayer
 var current_player: AudioStreamPlayer
 
 var current_track_path: String = ""
-var fade_duration: float = 1.5 # Длительность затухания в секундах
+var fade_duration: float = 1.5 # Длительность перехода в секундах
+var fade_tween: Tween # Ссылка на текущую анимацию громкости
+
+# Целевая громкость музыки (в децибелах).
+# -18.0 — это тихий фоновый уровень. 0.0 — это максимум.
+var music_volume_db: float = -18.0
 
 func _ready() -> void:
+	# Менеджер работает всегда, даже на паузе
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Создаем два плеера
@@ -23,11 +29,19 @@ func _ready() -> void:
 
 	current_player = player1
 
+# Функция для паузы
 func set_paused(is_paused: bool):
 	player1.stream_paused = is_paused
 	player2.stream_paused = is_paused
 
+# Метод для ручного изменения громкости (например, из настроек)
+func set_volume(db: float):
+	music_volume_db = db
+	if current_player:
+		current_player.volume_db = db
+
 func play_track(path: String):
+	# Если трек уже играет — ничего не делаем
 	if current_track_path == path:
 		return
 
@@ -36,33 +50,45 @@ func play_track(path: String):
 		print("MusicManager: Ошибка загрузки -> ", path)
 		return
 
+	# Настройка зацикливания
 	if new_stream is AudioStreamOggVorbis:
 		new_stream.loop = true
 	elif new_stream is AudioStreamWAV:
 		new_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 
+	# Если в данный момент идет плавный переход — прерываем его
+	if fade_tween:
+		fade_tween.kill()
+
+	# Определяем плееры для кроссфейда
 	var next_player = player2 if current_player == player1 else player1
 	var prev_player = current_player
 
 	next_player.stream = new_stream
-	next_player.volume_db = -80
+	next_player.volume_db = -80 # Начинаем с тишины
 	next_player.play()
 
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(next_player, "volume_db", 0.0, fade_duration).set_trans(Tween.TRANS_SINE)
+	fade_tween = create_tween().set_parallel(true)
 
+	# Плавно поднимаем громкость НОВОГО трека до фонового уровня
+	fade_tween.tween_property(next_player, "volume_db", music_volume_db, fade_duration).set_trans(Tween.TRANS_SINE)
+
+	# Плавно гасим СТАРЫЙ трек до тишины
 	if prev_player.playing:
-		tween.tween_property(prev_player, "volume_db", -80.0, fade_duration).set_trans(Tween.TRANS_SINE)
-		tween.chain().tween_callback(prev_player.stop)
+		fade_tween.tween_property(prev_player, "volume_db", -80.0, fade_duration).set_trans(Tween.TRANS_SINE)
+		fade_tween.chain().tween_callback(prev_player.stop)
 
 	current_player = next_player
 	current_track_path = path
 
 func stop_all(duration: float = 1.0):
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(player1, "volume_db", -80.0, duration)
-	tween.tween_property(player2, "volume_db", -80.0, duration)
-	tween.chain().tween_callback(func():
+	if fade_tween:
+		fade_tween.kill()
+
+	fade_tween = create_tween().set_parallel(true)
+	fade_tween.tween_property(player1, "volume_db", -80.0, duration)
+	fade_tween.tween_property(player2, "volume_db", -80.0, duration)
+	fade_tween.chain().tween_callback(func():
 		player1.stop()
 		player2.stop()
 		current_track_path = ""

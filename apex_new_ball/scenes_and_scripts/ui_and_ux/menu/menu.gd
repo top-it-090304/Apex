@@ -53,16 +53,20 @@ func _process(_delta):
 			timer = 0
 
 func _on_quit_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	get_tree().quit()
 
 func _on_play_1_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	SaveManager.slot_save = 0
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play1)
 
 func _on_play_2_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	SaveManager.slot_save = 1
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play2)
 
 func _on_play_3_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	SaveManager.slot_save = 2
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play3)

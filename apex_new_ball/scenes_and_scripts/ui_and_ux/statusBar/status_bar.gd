@@ -60,16 +60,20 @@ func _process(_delta: float) -> void:
 	#endregion
 
 func _on_pause_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	_show_modal()
 
 func _on_continue_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	_hide_modal()
 
 func _on_continue_2_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	_hide_modal()
 	Events.PLAYER_RESPAWN.emit()
 
 func _on_quit_menu_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK)
 	_hide_modal()
 	
 	var _loaded = SaveManager.load_slot(SaveManager.slot_save)
