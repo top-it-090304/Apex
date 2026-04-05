@@ -108,7 +108,7 @@ func move(state):
 		state.linear_velocity.y = 0
 		apply_central_impulse(Vector2(0, -jump_impulse))
 		coyote_timer = 0
-    
+	
 
 func _apply_adaptive_touch_ui():
 	if not has_node("CanvasLayer/move_left") or not has_node("CanvasLayer/move_right") or not has_node("CanvasLayer/move_up"):
