@@ -10,6 +10,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	var total = loads["level"]["flags_total"]
 	var collected = loads["level"]["flags_collected"]
 	if int(total) == int(collected):
+		SFXManager.play_sfx(SFXManager.DOOR, SFXManager.DOOR_VOLUME)
 		Events.OPEN_THE_DOOR.emit($AnimatedSprite2D)
 		await get_tree().create_timer(0.5).timeout
 		loads["level"]["scene_number"] += 1

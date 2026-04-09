@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
+	MusicManager.play_track("res://assets/sound/old_tricks_loop.ogg")
 	_spawn_flags()
 
 func _spawn_flags():
