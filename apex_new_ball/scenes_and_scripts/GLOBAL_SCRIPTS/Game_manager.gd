@@ -5,6 +5,7 @@ var flag = 0
 var live = 0
 var resp = 0
 var pause_scene
+var control_sensitivity: float = 5.0
 
 func _ready() -> void:
 	Events.TOUCHING_THE_FLAG.connect(_touch)

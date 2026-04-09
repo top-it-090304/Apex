@@ -9,7 +9,7 @@ const _REF_W := 1280.0
 const _REF_H := 720.0
 
 func _ready():
-	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg", 0.0)
+	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg")
 
 	print("=== MENU STARTED ===")
 	$black_canvas.modulate = Color.BLACK
@@ -26,7 +26,7 @@ func _reflow_menu() -> void:
 	var btn_w: float = clampf(317.0 * scale_ref, minf(260.0, w * 0.85), minf(420.0, w * 0.92))
 	var btn_h: float = clampf(66.0 * scale_ref, 44.0, 96.0)
 	var gap: float = clampf(15.0 * scale_ref, 8.0, 28.0)
-	var total_h: float = btn_h * 4.0 + gap * 3.0
+	var total_h: float = btn_h * 5.0 + gap * 4.0
 	var left_x: float = r.position.x + (w - btn_w) * 0.5
 	var top_y: float = r.position.y + (h - total_h) * 0.5
 	var font_size: int = int(clampf(30.0 * scale_ref, 18.0, 40.0))
@@ -36,7 +36,7 @@ func _reflow_menu() -> void:
 	var c: Vector2 = r.position + r.size * 0.5
 	$black_canvas.position = c
 	$black_canvas.scale = Vector2(r.size.x, r.size.y)
-	var buttons: Array = [$Play1, $Play2, $Play3, $Quit]
+	var buttons: Array = [$Play1, $Play2, $Play3, $Settings, $Quit]
 	var deletes: Array = [$Delete1, $Delete2, $Delete3]
 	
 	for i in range(buttons.size()):
@@ -60,6 +60,10 @@ func _process(_delta):
 func _on_quit_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	get_tree().quit()
+
+func _on_settings_pressed() -> void:
+	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
+	get_tree().change_scene_to_file("res://scenes_and_scripts/ui_and_ux/menu/settings_menu.tscn")
 
 func _on_play_1_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)

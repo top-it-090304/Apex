@@ -1,0 +1,190 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0kv5xeux15hp"]
+
+[ext_resource type="Script" uid="uid://dy0yjdv27lnaw" path="res://scenes_and_scripts/ui_and_ux/menu/settings_menu.gd" id="1_jx4al"]
+[ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_7gq1y"]
+[ext_resource type="FontFile" uid="uid://biq6mam8hcyyb" path="res://assets/Fonts/PlaypenSans-Bold.ttf" id="3_48oqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fynl8"]
+content_margin_left = 28.0
+content_margin_top = 24.0
+content_margin_right = 28.0
+content_margin_bottom = 24.0
+bg_color = Color(0.109804, 0.12549, 0.176471, 0.901961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.470588, 0.65098, 0.862745, 0.8)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ciwh"]
+font = ExtResource("3_48oqg")
+font_size = 32
+font_color = Color(0.98, 0.98, 0.98, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kn0e"]
+bg_color = Color(0.196078, 0.266667, 0.356863, 0.8)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="SettingsMenu" type="Node2D"]
+script = ExtResource("1_jx4al")
+
+[node name="Backdrop" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BackdropRoot" type="Control" parent="Backdrop"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Backdrop/BackdropRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0823529, 0.105882, 0.145098, 1)
+
+[node name="Parallax" parent="." instance=ExtResource("2_7gq1y")]
+scroll_offset = Vector2(140, 185)
+autoscroll_surfaces = true
+
+[node name="SettingsRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsRoot"]
+layout_mode = 2
+offset_left = 399.0
+offset_top = 107.0
+offset_right = 941.0
+offset_bottom = 566.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fynl8")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsRoot/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Настройки"
+label_settings = SubResource("LabelSettings_4ciwh")
+horizontal_alignment = 1
+
+[node name="Description" type="PanelContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7kn0e")
+
+[node name="DescriptionLabel" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/Description"]
+layout_mode = 2
+text = "Черновой экран настроек: базовые аудио-параметры и чувствительность управления."
+autowrap_mode = 3
+
+[node name="MusicRow" type="VBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/MusicRow"]
+layout_mode = 2
+text = "Громкость музыки"
+
+[node name="Controls" type="HBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/MusicRow"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MusicSlider" type="HSlider" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/MusicRow/Controls"]
+custom_minimum_size = Vector2(420, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 70.0
+
+[node name="MusicValue" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/MusicRow/Controls"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+text = "70"
+horizontal_alignment = 1
+
+[node name="SfxRow" type="VBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SfxRow"]
+layout_mode = 2
+text = "Громкость SFX"
+
+[node name="Controls" type="HBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SfxRow"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SfxSlider" type="HSlider" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SfxRow/Controls"]
+custom_minimum_size = Vector2(420, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 80.0
+
+[node name="SfxValue" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SfxRow/Controls"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+text = "80"
+horizontal_alignment = 1
+
+[node name="SensitivityRow" type="VBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow"]
+layout_mode = 2
+text = "Чувствительность управления"
+
+[node name="Controls" type="HBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SensitivitySlider" type="HSlider" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow/Controls"]
+custom_minimum_size = Vector2(420, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 15.0
+step = 0.1
+value = 5.0
+
+[node name="SensitivityValue" type="Label" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow/Controls"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+text = "5.0"
+horizontal_alignment = 1
+
+[node name="ButtonsRow" type="HBoxContainer" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/ButtonsRow"]
+custom_minimum_size = Vector2(220, 58)
+layout_mode = 2
+text = "Назад"
+
+[connection signal="value_changed" from="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/MusicRow/Controls/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SfxRow/Controls/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/SensitivityRow/Controls/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="pressed" from="SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/ButtonsRow/BackButton" to="." method="_on_back_button_pressed"]
