@@ -29,11 +29,9 @@ func _reflow_menu() -> void:
 	var left_x: float = r.position.x + (w - btn_w) * 0.5
 	var top_y: float = r.position.y + (h - total_h) * 0.5
 	var font_size: int = int(clampf(30.0 * scale_ref, 18.0, 40.0))
-	# Фон Parallax: нижний край слоёв (anchor_bottom_extent) совмещаем с низом видимой области.
 	var parallax: Parallax2D = $Parallax
 	var bottom_extent: float = parallax.get_anchor_bottom_extent()
 	parallax.position = Vector2(r.position.x, r.position.y + r.size.y - bottom_extent)
-	# Полноэкранная подложка для затемнения (если используется).
 	var c: Vector2 = r.position + r.size * 0.5
 	$black_canvas.position = c
 	$black_canvas.scale = Vector2(r.size.x, r.size.y)
@@ -53,20 +51,20 @@ func _process(_delta):
 			timer = 0
 
 func _on_quit_pressed() -> void:
-	SFXManager.play_sfx(SFXManager.CLICK)
+	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	get_tree().quit()
 
 func _on_play_1_pressed() -> void:
-	SFXManager.play_sfx(SFXManager.CLICK)
+	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	SaveManager.slot_save = 0
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play1)
 
 func _on_play_2_pressed() -> void:
-	SFXManager.play_sfx(SFXManager.CLICK)
+	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	SaveManager.slot_save = 1
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play2)
 
 func _on_play_3_pressed() -> void:
-	SFXManager.play_sfx(SFXManager.CLICK)
+	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	SaveManager.slot_save = 2
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play3)

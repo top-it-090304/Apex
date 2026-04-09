@@ -17,6 +17,7 @@ func _ready() -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	#region При срабатывании сигнала собирает монету, записывает инофрмацию в сейв
 	if flag == false:
+		SFXManager.play_sfx(SFXManager.COIN, SFXManager.COIN_VOLUME)
 		Events.COLLECTING_COINS.emit($AnimatedSprite2D)
 		var loaded0 = SaveManager.load_slot(SaveManager.slot_save)
 		loaded0["player"]["score"] = loaded0["player"]["score"] + 100

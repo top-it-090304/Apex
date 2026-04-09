@@ -1,6 +1,5 @@
 extends Node
 
-# Используем два плеера для плавного перехода (Crossfade)
 var player1: AudioStreamPlayer
 var player2: AudioStreamPlayer
 var current_player: AudioStreamPlayer
@@ -10,8 +9,7 @@ var fade_duration: float = 1.5 # Длительность перехода в с
 var fade_tween: Tween # Ссылка на текущую анимацию громкости
 
 # Целевая громкость музыки (в децибелах).
-# -18.0 — это тихий фоновый уровень. 0.0 — это максимум.
-var music_volume_db: float = -18.0
+var music_volume_db: float = -10.0
 
 func _ready() -> void:
 	# Менеджер работает всегда, даже на паузе

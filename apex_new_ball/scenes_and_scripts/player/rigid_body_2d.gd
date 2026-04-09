@@ -84,14 +84,14 @@ func move(state):
 	else:
 		current_force_multiplier = 0.0
 		
-	if not is_on_floor:
-		var target_angular_vel = direction * air_rotation_speed
+	#if not is_on_floor:
+		#var target_angular_vel = direction * air_rotation_speed
 		
-		state.angular_velocity = move_toward(
-			state.angular_velocity, 
-			target_angular_vel, 
-			rotation_accel
-		)
+		#state.angular_velocity = move_toward(
+			#state.angular_velocity, 
+			#target_angular_vel, 
+			#rotation_accel
+		#)
 	
 	# Ограничение скорости
 	var vel = state.linear_velocity
@@ -102,9 +102,11 @@ func move(state):
 	# Прыжок
 	if is_flappy_bird:
 		if Input.is_action_just_pressed("move_up"):
+			SFXManager.play_sfx(SFXManager.JUMP, SFXManager.JUPM_VOLUME)
 			var gravity_dir = sign(state.total_gravity.y)
 			state.linear_velocity.y = -400 * gravity_dir
 	elif Input.is_action_pressed("move_up") and coyote_timer > 0:
+		SFXManager.play_sfx(SFXManager.JUMP, SFXManager.JUPM_VOLUME)
 		state.linear_velocity.y = 0
 		apply_central_impulse(Vector2(0, -jump_impulse))
 		coyote_timer = 0
