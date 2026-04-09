@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctgiqnr1644wd"
-path="res://.godot/imported/4.png-5af72891bab08b47f4e27cc3be5d45f5.ctex"
+uid="uid://dsl0kw3ndsyd7"
+path="res://.godot/imported/decorationSet.png-4d8c9c6c496516d5a9b4f3a9d9b7a30e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3 Objects/Boxes/4.png"
-dest_files=["res://.godot/imported/4.png-5af72891bab08b47f4e27cc3be5d45f5.ctex"]
+source_file="res://assets/1 Tiles/decorationSet.png"
+dest_files=["res://.godot/imported/decorationSet.png-4d8c9c6c496516d5a9b4f3a9d9b7a30e.ctex"]
 
 [params]
 

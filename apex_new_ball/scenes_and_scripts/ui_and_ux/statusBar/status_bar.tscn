@@ -139,6 +139,7 @@ flat = true
 icon_alignment = 1
 
 [node name="modalWindow2" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="darkness" type="ColorRect" parent="modalWindow2"]
 anchors_preset = 15
