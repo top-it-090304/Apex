@@ -8,7 +8,7 @@ var current_track_path: String = ""
 var fade_duration: float = 1.5 # Длительность перехода в секундах
 var fade_tween: Tween # Ссылка на текущую анимацию громкости
 
-# Целевая громкость музыки (в децибелах).
+# Целевая громкость музыки по умолчанию (в децибелах).
 var music_volume_db: float = -10.0
 
 func _ready() -> void:
@@ -27,7 +27,6 @@ func _ready() -> void:
 
 	current_player = player1
 
-# Функция для паузы
 func set_paused(is_paused: bool):
 	player1.stream_paused = is_paused
 	player2.stream_paused = is_paused
@@ -38,8 +37,12 @@ func set_volume(db: float):
 	if current_player:
 		current_player.volume_db = db
 
-func play_track(path: String):
+func play_track(path: String, volume: float = -10.0):
 	if current_track_path == path:
+		if fade_tween:
+			fade_tween.kill()
+		fade_tween = create_tween()
+		fade_tween.tween_property(current_player, "volume_db", volume, 0.5)
 		return
 
 	var new_stream = load(path)
@@ -47,13 +50,11 @@ func play_track(path: String):
 		print("MusicManager: Ошибка загрузки -> ", path)
 		return
 
-	# Настройка зацикливания
 	if new_stream is AudioStreamOggVorbis:
 		new_stream.loop = true
 	elif new_stream is AudioStreamWAV:
 		new_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 
-	# Если в данный момент идет плавный переход — прерываем его
 	if fade_tween:
 		fade_tween.kill()
 
@@ -67,8 +68,7 @@ func play_track(path: String):
 
 	fade_tween = create_tween().set_parallel(true)
 
-	# Плавно поднимаем громкость НОВОГО трека до фонового уровня
-	fade_tween.tween_property(next_player, "volume_db", music_volume_db, fade_duration).set_trans(Tween.TRANS_SINE)
+	fade_tween.tween_property(next_player, "volume_db", volume, fade_duration).set_trans(Tween.TRANS_SINE)
 
 	# Плавно гасим СТАРЫЙ трек до тишины
 	if prev_player.playing:

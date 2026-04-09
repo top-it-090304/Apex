@@ -6,7 +6,8 @@ const _REF_H := 720.0
 var _tap_shape: RectangleShape2D
 
 func _ready() -> void:
-	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg")
+	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg", 0.0)
+
 	_ensure_tap_shape()
 	_apply_layout()
 	get_viewport().size_changed.connect(_apply_layout)
@@ -78,6 +79,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_screen_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
+
 	var tween = create_tween().set_parallel(true)
 	tween.tween_property($black_canvas, "modulate:a", 1.0, 0.8)
 	tween.tween_property($button/Label1, "modulate:a", 0.0, 0.4)

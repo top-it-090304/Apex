@@ -8,7 +8,7 @@ const _REF_W := 1280.0
 const _REF_H := 720.0
 
 func _ready():
-	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg")
+	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg", 0.0)
 
 	print("=== MENU STARTED ===")
 	$black_canvas.modulate = Color.BLACK
