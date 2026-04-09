@@ -172,7 +172,9 @@ func _respawn_checkpoint():
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUINT) 
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.3, 0.4)
 	tween.tween_property(self, "global_position", target, 1.4)
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, 0.4)
 	tween.finished.connect(func():
 		$Camera2D.reset_smoothing()
 		$Camera2D.position_smoothing_enabled = true
