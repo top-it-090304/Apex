@@ -18,6 +18,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	#region При срабатывании сигнала открывает сундук, записывает инофрмацию в сейв
 	if flag == false:
 		Events.OPEN_THE_CHEST.emit($AnimatedSprite2D)
+		SFXManager.play_sfx(SFXManager.DOOR, -10)
 		var loaded0 = SaveManager.load_slot(SaveManager.slot_save)
 		loaded0["player"]["score"] = loaded0["player"]["score"] + 500
 		loaded0["level"]["chests_collected_coordinates_level"].append({

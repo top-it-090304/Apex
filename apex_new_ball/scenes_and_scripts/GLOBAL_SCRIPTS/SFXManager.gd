@@ -11,11 +11,13 @@ const COIN = "res://assets/sound/coin.wav"
 const BOUNCE = "res://assets/sound/bounce.wav"
 const DAMAGE = "res://assets/sound/damage.wav"
 const JUMP = "res://assets/sound/jump.wav"
+const DOOR = "res://assets/sound/door.ogg"
 
 const CLICK_VOLUME = 5.0
 const JUPM_VOLUME = -20.0
 const COIN_VOLUME = -10.0
 const DAMAGE_VOLUME = 2.0
+const DOOR_VOLUME = 0.0
 
 func play_sfx(path: String, volume: float = 0.0):
 	if not FileAccess.file_exists(path):

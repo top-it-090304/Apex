@@ -39,7 +39,6 @@ func set_volume(db: float):
 		current_player.volume_db = db
 
 func play_track(path: String):
-	# Если трек уже играет — ничего не делаем
 	if current_track_path == path:
 		return
 
