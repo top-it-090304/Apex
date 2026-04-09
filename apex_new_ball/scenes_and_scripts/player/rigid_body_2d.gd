@@ -108,7 +108,7 @@ func move(state):
 		state.linear_velocity.y = 0
 		apply_central_impulse(Vector2(0, -jump_impulse))
 		coyote_timer = 0
-    
+	
 
 func _apply_adaptive_touch_ui():
 	if not has_node("CanvasLayer/move_left") or not has_node("CanvasLayer/move_right") or not has_node("CanvasLayer/move_up"):
@@ -170,7 +170,9 @@ func _respawn_checkpoint():
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUINT) 
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 0.3, 0.4)
 	tween.tween_property(self, "global_position", target, 1.4)
+	tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, 0.4)
 	tween.finished.connect(func():
 		$Camera2D.reset_smoothing()
 		$Camera2D.position_smoothing_enabled = true

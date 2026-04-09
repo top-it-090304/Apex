@@ -1,9 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0idc8kfioe68"]
+[gd_scene load_steps=7 format=3 uid="uid://c0idc8kfioe68"]
 
 [ext_resource type="Script" uid="uid://brbkg1on3numn" path="res://scenes_and_scripts/ui_and_ux/menu/menu.gd" id="1_vjb58"]
 [ext_resource type="PackedScene" uid="uid://r3ggk8bsk8qe" path="res://scenes_and_scripts/ui_and_ux/parallax/parallax.tscn" id="2_cdrs6"]
+[ext_resource type="Texture2D" uid="uid://dwkf11h5dtr43" path="res://assets/8 Button/trash.png" id="3_enutd"]
+[ext_resource type="Texture2D" uid="uid://de33cul7riqgl" path="res://assets/8 Button/Pause.png" id="4_4nq8u"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cdrs6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgv7m"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.219608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.690196)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")
@@ -16,10 +30,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -28,10 +38,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.118, 0.157, 0.204, 1)
@@ -39,34 +45,61 @@ color = Color(0.118, 0.157, 0.204, 1)
 [node name="Parallax" parent="." instance=ExtResource("2_cdrs6")]
 autoscroll_surfaces = true
 
-[node name="Play1" type="Button" parent="."]
-offset_left = 428.0
+[node name="Delete1" type="Button" parent="."]
+offset_left = 717.0
 offset_top = 195.0
-offset_right = 745.0
+offset_right = 1237.0
+offset_bottom = 723.0
+scale = Vector2(0.125, 0.125)
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("3_enutd")
+
+[node name="Play1" type="Button" parent="."]
+offset_left = 391.0
+offset_top = 195.0
+offset_right = 708.0
 offset_bottom = 261.0
 theme_override_font_sizes/font_size = 30
 text = "Сохранение 1"
 
-[node name="Play2" type="Button" parent="."]
-offset_left = 428.0
+[node name="Delete2" type="Button" parent="."]
+offset_left = 717.0
 offset_top = 270.0
-offset_right = 745.0
+offset_right = 1237.0
+offset_bottom = 798.0
+scale = Vector2(0.125, 0.125)
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("3_enutd")
+
+[node name="Play2" type="Button" parent="."]
+offset_left = 391.0
+offset_top = 270.0
+offset_right = 708.0
 offset_bottom = 336.0
 theme_override_font_sizes/font_size = 30
 text = "Сохранение 2"
 
-[node name="Play3" type="Button" parent="."]
-offset_left = 428.0
+[node name="Delete3" type="Button" parent="."]
+offset_left = 717.0
 offset_top = 345.0
-offset_right = 745.0
+offset_right = 1237.0
+offset_bottom = 873.0
+scale = Vector2(0.125, 0.125)
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("3_enutd")
+
+[node name="Play3" type="Button" parent="."]
+offset_left = 391.0
+offset_top = 345.0
+offset_right = 708.0
 offset_bottom = 411.0
 theme_override_font_sizes/font_size = 30
 text = "Сохранение 3"
 
 [node name="Quit" type="Button" parent="."]
-offset_left = 428.0
+offset_left = 391.0
 offset_top = 421.0
-offset_right = 745.0
+offset_right = 782.0
 offset_bottom = 487.0
 theme_override_font_sizes/font_size = 30
 text = "Выйти"
@@ -77,7 +110,35 @@ position = Vector2(576, 324)
 scale = Vector2(1152, 648)
 texture = SubResource("CanvasTexture_cdrs6")
 
+[node name="q12" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 1014.0
+offset_top = 224.0
+offset_right = 1082.0
+offset_bottom = 290.0
+alignment = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="q12"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dgv7m")
+
+[node name="MarginContainer" type="MarginContainer" parent="q12/PanelContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="q12/PanelContainer3/MarginContainer"]
+layout_mode = 2
+
+[node name="Pause" type="Button" parent="q12/PanelContainer3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_icons/icon = ExtResource("4_4nq8u")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="Delete1" to="." method="_on_delete_1_pressed"]
 [connection signal="pressed" from="Play1" to="." method="_on_play_1_pressed"]
+[connection signal="pressed" from="Delete2" to="." method="_on_delete_2_pressed"]
 [connection signal="pressed" from="Play2" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="Delete3" to="." method="_on_delete_3_pressed"]
 [connection signal="pressed" from="Play3" to="." method="_on_play_3_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

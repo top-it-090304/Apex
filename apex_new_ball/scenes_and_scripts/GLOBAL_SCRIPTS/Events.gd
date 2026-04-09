@@ -28,4 +28,7 @@ signal OPEN_THE_DOOR(sprite)
 signal BUTTON_PLAY_PRESSED(button)
 
 @warning_ignore("unused_signal")
+signal BUTTON_DELETE_PRESSED(button)
+
+@warning_ignore("unused_signal")
 signal PLAYER_RESPAWN

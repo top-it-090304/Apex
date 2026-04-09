@@ -12,6 +12,7 @@ func _ready() -> void:
 	Events.OPEN_THE_CHEST.connect(_chest)
 	Events.OPEN_THE_DOOR.connect(_door)
 	Events.BUTTON_PLAY_PRESSED.connect(_button)
+	Events.BUTTON_DELETE_PRESSED.connect(_delete)
 	Events.PLAYER_RESPAWN.connect(_respa)
 	
 	for i in range(3):
@@ -54,5 +55,10 @@ func _door(sprite):
 
 func _button(number_button):
 	var loading = SaveManager.load_slot(number_button)
+	print("запуск игры")
 	get_tree().change_scene_to_file(loading["level"]["current_scene"])
 		
+func _delete(number_button):
+	var data = SaveManager.get_default_data()
+	print("удаление игры")
+	SaveManager.save_slot(number_button, data)

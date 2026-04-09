@@ -3,6 +3,7 @@ extends Node2D
 var timer = 0
 var flag1 = false
 enum BUTTON_PLAY {Play1, Play2, Play3}
+enum BUTTON_DELETE {Delete1, Delete2, Delete3}
 
 const _REF_W := 1280.0
 const _REF_H := 720.0
@@ -36,12 +37,18 @@ func _reflow_menu() -> void:
 	$black_canvas.position = c
 	$black_canvas.scale = Vector2(r.size.x, r.size.y)
 	var buttons: Array = [$Play1, $Play2, $Play3, $Quit]
+	var deletes: Array = [$Delete1, $Delete2, $Delete3]
+	
 	for i in range(buttons.size()):
 		var b: Button = buttons[i]
 		b.position = Vector2(left_x, top_y + i * (btn_h + gap))
 		b.size = Vector2(btn_w, btn_h)
 		b.add_theme_font_size_override("font_size", font_size)
-
+		
+	for i in range(deletes.size()):
+		var d: Button = deletes[i]
+		d.position = Vector2(75 + left_x + btn_w - btn_h, top_y + i * (btn_h + gap))
+		d.size = Vector2(btn_h, btn_h)
 
 func _process(_delta):
 	if flag1 != true:
@@ -64,3 +71,16 @@ func _on_play_2_pressed() -> void:
 func _on_play_3_pressed() -> void:
 	SaveManager.slot_save = 2
 	Events.BUTTON_PLAY_PRESSED.emit(BUTTON_PLAY.Play3)
+
+
+func _on_delete_1_pressed() -> void:
+	SaveManager.slot_save = 0
+	Events.BUTTON_DELETE_PRESSED.emit(BUTTON_DELETE.Delete1)
+
+func _on_delete_2_pressed() -> void:
+	SaveManager.slot_save = 1
+	Events.BUTTON_DELETE_PRESSED.emit(BUTTON_DELETE.Delete2)
+
+func _on_delete_3_pressed() -> void:
+	SaveManager.slot_save = 2
+	Events.BUTTON_DELETE_PRESSED.emit(BUTTON_DELETE.Delete3)
