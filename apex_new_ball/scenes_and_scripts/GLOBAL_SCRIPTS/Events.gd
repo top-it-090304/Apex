@@ -32,3 +32,6 @@ signal BUTTON_DELETE_PRESSED(button)
 
 @warning_ignore("unused_signal")
 signal PLAYER_RESPAWN
+
+@warning_ignore("unused_signal")
+signal CONTROL_SENSITIVITY_CHANGED(value)

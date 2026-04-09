@@ -36,6 +36,7 @@ var coyote_timer = 0.0
 func _ready():
 	process_mode = PROCESS_MODE_ALWAYS
 	can_sleep = false
+	acceleration_speed = GameManager.control_sensitivity
 	spawn_position = global_position
 	$AnimatedSprite2D.play()
 	print(global_position)
@@ -47,6 +48,10 @@ func _ready():
 	_apply_adaptive_touch_ui()
 	get_viewport().size_changed.connect(_apply_adaptive_touch_ui)
 	Events.PLAYER_RESPAWN.connect(_respawn_checkpoint)
+	Events.CONTROL_SENSITIVITY_CHANGED.connect(_on_control_sensitivity_changed)
+
+func _on_control_sensitivity_changed(value: float) -> void:
+	acceleration_speed = value
 
 func _integrate_forces(state):
 	if Input.is_action_just_pressed("flip_gravity"):
