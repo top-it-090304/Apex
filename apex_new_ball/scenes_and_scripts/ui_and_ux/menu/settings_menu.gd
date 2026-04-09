@@ -16,8 +16,8 @@ const _REF_H := 720.0
 @onready var back_button: Button = $SettingsRoot/PanelContainer/MarginContainer/VBoxContainer/ButtonsRow/BackButton
 
 func _ready() -> void:
-	music_slider.set_value_no_signal(MusicManager.get_volume_percent())
-	sfx_slider.set_value_no_signal(SFXManager.get_volume_percent())
+	music_slider.set_value_no_signal(GameManager.music_volume_percent)
+	sfx_slider.set_value_no_signal(GameManager.sfx_volume_percent)
 	sensitivity_slider.set_value_no_signal(GameManager.control_sensitivity)
 	get_viewport().size_changed.connect(_reflow_layout)
 	call_deferred("_reflow_layout")
@@ -72,16 +72,15 @@ func _format_slider_value(slider: HSlider) -> String:
 	return str(int(round(slider.value)))
 
 func _on_music_slider_value_changed(value: float) -> void:
-	MusicManager.set_volume_percent(value)
+	GameManager.set_music_volume_percent(value)
 	music_value.text = str(int(round(value)))
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	SFXManager.set_volume_percent(value)
+	GameManager.set_sfx_volume_percent(value)
 	sfx_value.text = str(int(round(value)))
 
 func _on_sensitivity_slider_value_changed(value: float) -> void:
-	GameManager.control_sensitivity = value
-	Events.CONTROL_SENSITIVITY_CHANGED.emit(value)
+	GameManager.set_control_sensitivity(value)
 	sensitivity_value.text = String.num(value, 1)
 
 func _on_back_button_pressed() -> void:
