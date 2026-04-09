@@ -6,7 +6,7 @@ const _REF_H := 720.0
 var _tap_shape: RectangleShape2D
 
 func _ready() -> void:
-	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg", 0.0)
+	MusicManager.play_track("res://assets/sound/pixeltown_heroes.ogg")
 
 	_ensure_tap_shape()
 	_apply_layout()

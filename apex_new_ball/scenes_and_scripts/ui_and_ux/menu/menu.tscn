@@ -98,11 +98,19 @@ text = "Сохранение 3"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 391.0
+offset_top = 496.0
+offset_right = 782.0
+offset_bottom = 562.0
+theme_override_font_sizes/font_size = 30
+text = "Выйти"
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 391.0
 offset_top = 421.0
 offset_right = 782.0
 offset_bottom = 487.0
 theme_override_font_sizes/font_size = 30
-text = "Выйти"
+text = "Настройки"
 
 [node name="black_canvas" type="Sprite2D" parent="."]
 visible = false
@@ -142,3 +150,4 @@ icon_alignment = 1
 [connection signal="pressed" from="Delete3" to="." method="_on_delete_3_pressed"]
 [connection signal="pressed" from="Play3" to="." method="_on_play_3_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]

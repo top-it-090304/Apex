@@ -7,6 +7,8 @@ var current_player: AudioStreamPlayer
 var current_track_path: String = ""
 var fade_duration: float = 1.5 # Длительность перехода в секундах
 var fade_tween: Tween # Ссылка на текущую анимацию громкости
+const MIN_VOLUME_DB := -40.0
+const MUTED_VOLUME_DB := -80.0
 
 # Целевая громкость музыки по умолчанию (в децибелах).
 var music_volume_db: float = -10.0
@@ -37,12 +39,21 @@ func set_volume(db: float):
 	if current_player:
 		current_player.volume_db = db
 
-func play_track(path: String, volume: float = -10.0):
+func set_volume_percent(percent: float) -> void:
+	music_volume_db = _percent_to_db(percent)
+	if current_player:
+		current_player.volume_db = music_volume_db
+
+func get_volume_percent() -> float:
+	return _db_to_percent(music_volume_db)
+
+func play_track(path: String, volume: float = INF):
+	var target_volume: float = music_volume_db if is_inf(volume) else volume
 	if current_track_path == path:
 		if fade_tween:
 			fade_tween.kill()
 		fade_tween = create_tween()
-		fade_tween.tween_property(current_player, "volume_db", volume, 0.5)
+		fade_tween.tween_property(current_player, "volume_db", target_volume, 0.5)
 		return
 
 	var new_stream = load(path)
@@ -63,16 +74,16 @@ func play_track(path: String, volume: float = -10.0):
 	var prev_player = current_player
 
 	next_player.stream = new_stream
-	next_player.volume_db = -80 # Начинаем с тишины
+	next_player.volume_db = MUTED_VOLUME_DB # Начинаем с тишины
 	next_player.play()
 
 	fade_tween = create_tween().set_parallel(true)
 
-	fade_tween.tween_property(next_player, "volume_db", volume, fade_duration).set_trans(Tween.TRANS_SINE)
+	fade_tween.tween_property(next_player, "volume_db", target_volume, fade_duration).set_trans(Tween.TRANS_SINE)
 
 	# Плавно гасим СТАРЫЙ трек до тишины
 	if prev_player.playing:
-		fade_tween.tween_property(prev_player, "volume_db", -80.0, fade_duration).set_trans(Tween.TRANS_SINE)
+		fade_tween.tween_property(prev_player, "volume_db", MUTED_VOLUME_DB, fade_duration).set_trans(Tween.TRANS_SINE)
 		fade_tween.chain().tween_callback(prev_player.stop)
 
 	current_player = next_player
@@ -83,10 +94,21 @@ func stop_all(duration: float = 1.0):
 		fade_tween.kill()
 
 	fade_tween = create_tween().set_parallel(true)
-	fade_tween.tween_property(player1, "volume_db", -80.0, duration)
-	fade_tween.tween_property(player2, "volume_db", -80.0, duration)
+	fade_tween.tween_property(player1, "volume_db", MUTED_VOLUME_DB, duration)
+	fade_tween.tween_property(player2, "volume_db", MUTED_VOLUME_DB, duration)
 	fade_tween.chain().tween_callback(func():
 		player1.stop()
 		player2.stop()
 		current_track_path = ""
 	)
+
+func _percent_to_db(percent: float) -> float:
+	var clamped_percent := clampf(percent, 0.0, 100.0)
+	if clamped_percent <= 0.0:
+		return MUTED_VOLUME_DB
+	return lerpf(MIN_VOLUME_DB, 0.0, clamped_percent / 100.0)
+
+func _db_to_percent(db: float) -> float:
+	if db <= MUTED_VOLUME_DB:
+		return 0.0
+	return clampf(inverse_lerp(MIN_VOLUME_DB, 0.0, db) * 100.0, 0.0, 100.0)

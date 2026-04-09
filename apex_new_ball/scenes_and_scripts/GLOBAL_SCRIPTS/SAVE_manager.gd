@@ -1,6 +1,7 @@
 extends Node
  
 const SAVE_PATH = "user://game_data.cfg"
+const SETTINGS_SECTION = "app_settings"
  
 var slot_save
 # ─── Сохранение слота ─────────────────────────────────────────────────────────
@@ -88,6 +89,30 @@ func get_all_slots() -> Array:
  
 func slot_exists(slot_id) -> bool:
 	return str(slot_id) in get_all_slots()
+
+
+func save_settings(data: Dictionary) -> void:
+	var config = ConfigFile.new()
+	config.load(SAVE_PATH)
+
+	for key in data.keys():
+		config.set_value(SETTINGS_SECTION, key, data[key])
+
+	config.save(SAVE_PATH)
+	print("SaveManager: настройки сохранены")
+
+
+func load_settings() -> Dictionary:
+	var config = ConfigFile.new()
+	var defaults := get_default_settings()
+
+	if config.load(SAVE_PATH) != OK:
+		return defaults
+
+	for key in defaults.keys():
+		defaults[key] = config.get_value(SETTINGS_SECTION, key, defaults[key])
+
+	return defaults
  
  
 # ─── Данные по умолчанию ──────────────────────────────────────────────────────
@@ -111,4 +136,12 @@ func get_default_data() -> Dictionary:
 			"coins_collected_coordinates_level": [],
 			"chests_collected_coordinates_level": []
 		}
+	}
+
+
+func get_default_settings() -> Dictionary:
+	return {
+		"music_volume": 75.0,
+		"sfx_volume": 100.0,
+		"control_sensitivity": 5.0
 	}
