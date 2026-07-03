@@ -17,6 +17,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		flag = true  # ставим до await, иначе мяч может войти ещё раз за 0.5с
 		SFXManager.play_sfx(SFXManager.DOOR, SFXManager.DOOR_VOLUME)
 		Events.OPEN_THE_DOOR.emit($AnimatedSprite2D)
+		PycoLog.log_event_by_type("level_complete", {"level": loads["level"]["scene_number"], "score": loads["player"]["score"]})
 		await get_tree().create_timer(0.5).timeout
 		loads["level"]["scene_number"] += 1
 		loads["level"]["flags_collected"] = 0
@@ -28,6 +29,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		loads["level"]["current_scene"] = "res://scenes_and_scripts/levels/level_%d.tscn" % loads["level"]["scene_number"]
 		SaveManager.save(GameManager.local_save)
 		if loads["level"]["scene_number"] > 5:
+			PycoLog.log_event_by_type("game_win", {"score": loads["player"]["score"]})
 			Events.SHOW_LEADERBOARD_SUBMIT.emit(loads["player"]["score"])
 		else:
 			if ResourceLoader.exists(loads["level"]["current_scene"]):

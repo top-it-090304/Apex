@@ -137,6 +137,7 @@ func _on_play_button_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	SaveManager.save(SaveManager.get_default_data())
 	GameManager.local_save = SaveManager.load()
+	PycoLog.log_event_by_type("game_new", {})
 	get_tree().change_scene_to_file(GameManager.local_save["level"]["current_scene"])
 #endregion
 
@@ -148,15 +149,17 @@ func _on_continue_button_pressed() -> void:
 	if not ResourceLoader.exists(path):
 		push_warning("Сейв ссылается на отсутствующую сцену: " + path)
 		SaveManager.delete()
-		GameManager.local_save = SaveManager.get_default_data()    
+		GameManager.local_save = SaveManager.get_default_data()
 		_refresh_buttons()
 		return
+	PycoLog.log_event_by_type("game_continue", {"scene_number": GameManager.local_save["level"]["scene_number"]})
 	get_tree().change_scene_to_file(path)
 #endregion
 
 #region Кнопка удаления сохранения (Restart) — стирает сейв, UI возвращается к "новой игре"
 func _on_delete_button_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
+	PycoLog.log_event_by_type("save_delete", {})
 	SaveManager.delete()
 	GameManager.local_save = SaveManager.get_default_data()
 	_refresh_buttons()
@@ -179,6 +182,7 @@ func _on_quit_button_pressed() -> void:
 	SFXManager.play_sfx(SFXManager.CLICK, SFXManager.CLICK_VOLUME)
 	if SaveManager.exists():
 		SaveManager.save(GameManager.local_save)
+	await PycoLog.log_stop_playing()
 	get_tree().quit()
 #endregion
 

@@ -102,6 +102,7 @@ func _on_quit_menu_pressed() -> void:
 		
 	if GameManager.local_save["player"]["lives"] < 1:
 		var final_score = GameManager.local_save["player"]["score"]
+		PycoLog.log_event_by_type("game_over", {"level": GameManager.local_save["level"]["scene_number"], "score": final_score})
 		SaveManager.delete()
 		GameManager.local_save = SaveManager.get_default_data()
 		Events.SHOW_LEADERBOARD_SUBMIT.emit(final_score)

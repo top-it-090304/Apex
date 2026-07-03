@@ -27,6 +27,7 @@ func _on_save_pressed() -> void:
 		player_name = "Player"
 	
 	SaveManager.save_score(player_name, current_score)
+	PycoLog.log_event_by_type("leaderboard_submit", {"score": current_score})
 	_close_and_continue()
 
 func _on_skip_pressed() -> void:
